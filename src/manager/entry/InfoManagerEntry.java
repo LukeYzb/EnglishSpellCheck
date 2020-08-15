@@ -1,7 +1,7 @@
 package manager.entry;
 
-import manager.controller.OtherStudentController;
-import manager.controller.TeacherController;
+import manager.controller.OtherCustomerController;
+import manager.controller.OtherManagerController;
 
 import java.util.Scanner;
 
@@ -10,9 +10,9 @@ public class InfoManagerEntry {
         Scanner sc = new Scanner(System.in);
         l:
         while (true){
-            System.out.println("欢迎使用管理系统!");
-            System.out.println("1：学生管理");
-            System.out.println("2：老师管理");
+            System.out.println("欢迎使用水果店管理系统!");
+            System.out.println("1：顾客角色");
+            System.out.println("2：管理角色");
             System.out.println("3：退出系统");
             System.out.print("请输入要选择的操作（1~3）：");
             lo:
@@ -21,14 +21,14 @@ public class InfoManagerEntry {
                 lo1:
                 switch (choice) {
                     case "1":
-//                        开启学生管理系统
-                        OtherStudentController studentController=new OtherStudentController();
+//                        开启顾客系统
+                        OtherCustomerController studentController=new OtherCustomerController();
                         studentController.start();
                         break lo;
                     case "2":
-//                        开启老师管理系统
-                        TeacherController teacherController=new TeacherController();
-                        teacherController.start();
+//                        开启管理者系统
+                        OtherManagerController otherManagerController =new OtherManagerController();
+                        otherManagerController.start();
                         break lo;
                     case "3":
                         System.out.println("退出成功，欢迎下次使用！");
