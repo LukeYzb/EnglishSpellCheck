@@ -1,9 +1,9 @@
 package manager.factory;
 
-import manager.dao.OtherManagerDao;
+import manager.dao.impl.ManagerDaoImpl;
 
 public class ManagerDaoFactory {
-    public static OtherManagerDao getManagerDao(){
-        return new OtherManagerDao();
+    public static ManagerDaoImpl getManagerDao(){
+        return new ManagerDaoImpl();
     }
 }

@@ -17,11 +17,11 @@ public class Customer extends Obj {
     public Customer() {
     }
 
-    //id顾客id，name顾客名称，money顾客金额，password密码
+    //id顾客id，name顾客名称，password密码, money顾客金额
     public Customer(String id, String name, String password, String money) {
         super(id, name);
         this.password = password;
-        this.money=money;
+        this.money = money;
     }
 
     public String getPassword() {
@@ -38,5 +38,25 @@ public class Customer extends Obj {
                 "password='" + password + '\'' +
                 ", money='" + money + '\'' +
                 '}';
+    }
+
+    public String toTxt() {
+        return this.getId() + ","
+                + this.getName() + ","
+                + password + ","
+                + money;
+    }
+
+    public static Customer toObj(String s) {
+        if (s == null) {
+            return null;
+        }
+        Customer customer = new Customer();
+        String[] split = s.split(",");
+        customer.setId(split[0]);
+        customer.setName(split[1]);
+        customer.setPassword(split[2]);
+        customer.setMoney(split[3]);
+        return customer;
     }
 }

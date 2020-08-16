@@ -1,12 +1,12 @@
 package manager.service;
 
-import manager.dao.BaseFruitDao;
+import manager.dao.FruitDao;
 import manager.domain.Fruit;
 import manager.factory.FruitDaoFactory;
 
 public class FruitService {
 //    通过水果库管工厂类，获取库管对象
-    private BaseFruitDao fruitDao= FruitDaoFactory.getFruitDao();
+    private FruitDao fruitDao= FruitDaoFactory.getFruitDao();
 //    private OtherFruitDao fruitDao=new OtherFruitDao();
     public boolean addFruit(Fruit fruit) {
 //        水果对象交给FruitDao库管

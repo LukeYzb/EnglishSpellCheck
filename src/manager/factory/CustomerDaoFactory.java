@@ -1,10 +1,10 @@
 package manager.factory;
 
-import manager.dao.BaseCustomerDao;
-import manager.dao.OtherCustomerDao;
+import manager.dao.CustomerDao;
+import manager.dao.impl.CustomerDaoImpl;
 
 public class CustomerDaoFactory {
-    public static BaseCustomerDao getCustomerDao(){
-        return new OtherCustomerDao();
+    public static CustomerDao getCustomerDao(){
+        return new CustomerDaoImpl();
     }
 }

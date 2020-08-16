@@ -38,4 +38,24 @@ public class Fruit extends Obj {
                 ", price='" + price + '\'' +
                 '}';
     }
+
+    public String toTxt() {
+        return this.getId() + ","
+                + this.getName() + ","
+                + price + ","
+                + amount;
+    }
+
+    public static Fruit toObj(String s) {
+        if (s == null) {
+            return null;
+        }
+        Fruit fruit = new Fruit();
+        String[] split = s.split(",");
+        fruit.setId(split[0]);
+        fruit.setName(split[1]);
+        fruit.setPrice(split[2]);
+        fruit.setAmount(split[3]);
+        return fruit;
+    }
 }

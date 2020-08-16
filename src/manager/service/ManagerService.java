@@ -1,11 +1,11 @@
 package manager.service;
 
-import manager.dao.OtherManagerDao;
+import manager.dao.impl.ManagerDaoImpl;
 import manager.domain.Manager;
 import manager.factory.ManagerDaoFactory;
 
 public class ManagerService {
-    private OtherManagerDao managerDao = ManagerDaoFactory.getManagerDao();
+    private ManagerDaoImpl managerDao = ManagerDaoFactory.getManagerDao();
     public boolean addManager(Manager manager) {
 //        顾客对象交给ManagerDao库管
 //        ManagerDao managerDao=new ManagerDao();

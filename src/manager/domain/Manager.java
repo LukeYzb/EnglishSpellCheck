@@ -4,14 +4,6 @@ public class Manager extends Obj {
     //    password密码
     private String password;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Manager() {
     }
 
@@ -21,10 +13,36 @@ public class Manager extends Obj {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Manager{" +
                 "password='" + password + '\'' +
                 '}';
+    }
+
+    public String toTxt() {
+        return this.getId() + ","
+                + this.getName() + ","
+                + password;
+    }
+
+    public static Manager toObj(String s) {
+        if (s == null) {
+            return null;
+        }
+        Manager manager = new Manager();
+        String[] split = s.split(",");
+        manager.setId(split[0]);
+        manager.setName(split[1]);
+        manager.setPassword(split[2]);
+        return manager;
     }
 }

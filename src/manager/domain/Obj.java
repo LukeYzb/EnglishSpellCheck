@@ -1,5 +1,7 @@
 package manager.domain;
 
+import java.lang.reflect.Field;
+
 public class Obj {
     private String id;
     private String name;

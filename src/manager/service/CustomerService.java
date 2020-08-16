@@ -1,11 +1,11 @@
 package manager.service;
 
-import manager.dao.BaseCustomerDao;
+import manager.dao.CustomerDao;
 import manager.domain.Customer;
 import manager.factory.CustomerDaoFactory;
 
 public class CustomerService {
-    private BaseCustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
+    private CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
     public boolean addCustomer(Customer customer) {
 //        顾客对象交给CustomerDao库管
 //        CustomerDao customerDao=new CustomerDao();
