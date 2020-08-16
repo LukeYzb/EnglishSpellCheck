@@ -14,14 +14,9 @@ public class OtherManagerController implements BaseManagerController{
         l:
         while (true){
             System.out.println("欢迎使用管理功能!");
-//            System.out.println("1：添加老师");
-//            System.out.println("2：删除老师");
-//            System.out.println("3：修改老师");
-//            System.out.println("4：查看老师");
-//            System.out.println("5：退出");
-            System.out.println("1：管理用户");
-            System.out.println("2：管理水果");
-            System.out.println("3：退出");
+            System.out.print("1：管理用户");
+            System.out.print("  2：管理水果");
+            System.out.println("  3：退出");
             System.out.print("请输入要选择的操作（1~3）：");
             lo:
             while (true) {
@@ -51,9 +46,9 @@ public class OtherManagerController implements BaseManagerController{
         l:
         while (true) {
             System.out.println("欢迎使用顾客管理功能!");
-            System.out.println("1：注册新用户");
-            System.out.println("2：编辑现用户");
-            System.out.println("3：退出");
+            System.out.print("①：注册新用户");
+            System.out.print("  ②：编辑现用户");
+            System.out.println("  ③：退出");
             System.out.print("请输入要选择的操作（1~3）：");
             lo:
             while (true) {
@@ -64,7 +59,7 @@ public class OtherManagerController implements BaseManagerController{
                         addCustomer();
                         break lo;
                     case "2":
-                        manageCustomer();
+                        Customermanagement();
                         break lo;
                     case "3":
                         System.out.println("退出管理系统，成功！");
@@ -78,14 +73,17 @@ public class OtherManagerController implements BaseManagerController{
         }
     }
 
+    private void Customermanagement() {
+    }
+
     @Override
     public void manageFruit() {
         l:
         while (true) {
             System.out.println("欢迎使用水果管理功能!");
-            System.out.println("1：添加水果");
-            System.out.println("2：修改水果数据");
-            System.out.println("3：退出");
+            System.out.print("1：添加水果");
+            System.out.print("  2：修改水果数据");
+            System.out.println("  3：返回上一层");
             System.out.print("请输入要选择的操作（1~3）：");
             lo:
             while (true) {
@@ -99,8 +97,7 @@ public class OtherManagerController implements BaseManagerController{
                         changeFruits();
                         break lo;
                     case "3":
-                        System.out.println("退出管理系统，成功！");
-//                        退出当前正在运行的JVM虚拟机
+                        System.out.println("退出水果管理系统，成功！");
                         break l;
                     default:
                         System.out.print("您的输入有误，请重新输入。");
@@ -111,9 +108,12 @@ public class OtherManagerController implements BaseManagerController{
     }
 
     private void changeFruits() {
+//        需要修改
+        System.out.println("changeFruits");
     }
 
     private void addFruit() {
+        System.out.println("addFruit");
     }
 
     public void addCustomer() {
@@ -153,7 +153,7 @@ public class OtherManagerController implements BaseManagerController{
         }
     }
 
-//    录入老师ID
+//    录入顾客ID，可以用来判断id是否存在，返回String的ID值或null
     public String inputManagerId(){
         String Id=null;
         l:
@@ -182,7 +182,7 @@ public class OtherManagerController implements BaseManagerController{
         }
         return Id;
     }
-
+//    可以用来输入顾客姓名和充值金额
     public Customer inputManagerInfo(String id){
         //            根据ID修改顾客
         System.out.println("请输入顾客昵称：");
@@ -190,10 +190,10 @@ public class OtherManagerController implements BaseManagerController{
         System.out.println("请输入充值金额：");
         String age = sc.next();
 //        将键盘录入信息封装为顾客对象
-        Customer newmanager = new Customer();
-        newmanager.setId(id);
-        newmanager.setName(name);
-        newmanager.setAge(age);
-        return newmanager;
+        Customer newcustomer = new Customer();
+        newcustomer.setId(id);
+        newcustomer.setName(name);
+        newcustomer.setAge(age);
+        return newcustomer;
     }
 }

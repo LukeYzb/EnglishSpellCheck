@@ -12,8 +12,8 @@ public class InfoManagerEntry {
         while (true){
             System.out.println("欢迎使用水果店管理系统!");
             System.out.println("1：顾客角色");
-            System.out.println("2：管理角色");
-            System.out.println("3：退出系统");
+            System.out.print("  2：管理角色");
+            System.out.println("  3：退出系统");
             System.out.print("请输入要选择的操作（1~3）：");
             lo:
             while (true) {
@@ -22,8 +22,8 @@ public class InfoManagerEntry {
                 switch (choice) {
                     case "1":
 //                        开启顾客系统
-                        OtherCustomerController studentController=new OtherCustomerController();
-                        studentController.start();
+                        OtherCustomerController customerController=new OtherCustomerController();
+                        customerController.start();
                         break lo;
                     case "2":
 //                        开启管理者系统

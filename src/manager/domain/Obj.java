@@ -1,14 +1,14 @@
 package manager.domain;
 
-public class Object {
+public class Obj {
     private String id;
     private String name;
     private String money;
 
-    public Object() {
+    public Obj() {
     }
 
-    public Object(String id, String name, String money) {
+    public Obj(String id, String name, String money) {
         this.id = id;
         this.name = name;
         this.money = money;

@@ -9,22 +9,16 @@ public class OtherCustomerController implements BaseCustomerController {
     private FruitService customerService = new FruitService();
     private Scanner sc = new Scanner(System.in);
 
-    //    开启学生管理系统，展示菜单
+    //    开启顾客购买系统，展示菜单
     public void start() {
-//        Scanner sc = new Scanner(System.in);//放在开头
         l:
         while (true) {
             System.out.println("欢迎使用顾客购买功能!");
-//            System.out.println("1：添加学生");
-//            System.out.println("2：删除学生");
-//            System.out.println("3：修改学生");
-//            System.out.println("4：查看学生");
-//            System.out.println("5：退出");
-            System.out.println("1：登录");
-            System.out.println("2：查看水果");
-            System.out.println("3：开始购买");
-            System.out.println("4：结账");
-            System.out.println("5：退出");
+            System.out.print("①：登录");
+            System.out.print("  ②：查看水果");
+            System.out.print("  ③：购买水果");
+            System.out.print("  ④：结账");
+            System.out.println("⑤：退出");
             System.out.print("请输入要选择的操作（1~5）：");
             lo:
             while (true) {
@@ -57,7 +51,7 @@ public class OtherCustomerController implements BaseCustomerController {
 
     @Override
     public void logIn() {
-
+//需要修改，输入账号（输入n返回），判断账号有误重新输入，输入密码（输入n返回），判断密码有误重新输入
     }
 
     @Override
@@ -68,7 +62,7 @@ public class OtherCustomerController implements BaseCustomerController {
             System.out.println("查无信息，请添加后重试。");
             return;
         }
-//        遍历数组打印学生信息
+//        遍历数组打印水果信息
         System.out.println("编号\t\t名称\t价格\t\t库存量");
         for (int i = 0; i < fruits.length; i++) {
             Fruit fruit = fruits[i];
@@ -80,17 +74,17 @@ public class OtherCustomerController implements BaseCustomerController {
 
     @Override
     public void buyFruit() {
-
+//需要修改
     }
 
     @Override
     public void checkout() {
-
+//需要修改，添加结账后显示账单（同乐）
     }
 
 
     //    录入水果ID，可以用在buyFruit功能里
-    public String inputCustomerId() {
+    public String inputFruitId() {
         String Id = null;
         l:
         while (true) {

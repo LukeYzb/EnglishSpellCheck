@@ -5,12 +5,16 @@ import manager.domain.Fruit;
 import java.util.ArrayList;
 
 public class OtherFruitDao implements BaseFruitDao {
-    //        创建水果数组
+    //        创建水果集合
     private static ArrayList<Fruit> fruits =new ArrayList<>();
 
-    static {
-        Fruit fruit1 =new Fruit("1","Luke","22","1998-2-26");
-        fruits.add(fruit1);
+//    用IO流传入Fruit对象，然后添加到fruits集合里
+    private void IputFruit(){
+
+    }
+    //    用IO流传出Fruit对象，然后添加到fruits集合里
+    private void OutputFruit(){
+
     }
 
     public boolean addFruit(Fruit fruit) {
