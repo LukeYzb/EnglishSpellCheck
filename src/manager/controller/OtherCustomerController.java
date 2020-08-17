@@ -88,15 +88,16 @@ public class OtherCustomerController implements BaseCustomerController {
     }
     @Override
     public void buyFruit() {
-        String name = sc.next();
-        String amount = sc.next();
+        CustomerService customer=new CustomerService();
         lo:
         while (true) {
             System.out.println("请输入你要购买的水果");
+            String name = sc.next();
             System.out.println("请输入你要购买的数量");
+            String amount = sc.next();
             System.out.println("是否继续购买Y/N");
             String go = sc.next();
-            CustomerService.buyFruit(name,amount);
+            customer.buyFruit(name,amount);
             if (go == "Y") {
                 continue;
             } else {

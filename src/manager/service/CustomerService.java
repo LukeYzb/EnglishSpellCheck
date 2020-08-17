@@ -3,6 +3,7 @@ package manager.service;
 
 import manager.dao.CustomerDao;
 import manager.dao.impl.CustomerDaoImpl;
+import manager.dao.impl.FruitDaoImpl;
 import manager.domain.Customer;
 import manager.factory.CustomerDaoFactory;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class CustomerService {
     CustomerDaoImpl customerDaoImpl=new CustomerDaoImpl();
     private CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
+    FruitDaoImpl fruitDao=new FruitDaoImpl();
 
 
     //判断顾客账号或者密码是否正确
@@ -21,6 +23,9 @@ public class CustomerService {
         for (int i = 0; i < customers.size(); i++) {
             //customers.toString();
             //Customer customer = Customer.toObj(customers);
+        }
+        for (Customer customer : customers) {
+
         }
         return false;
     }
@@ -63,7 +68,7 @@ public class CustomerService {
         return customers;
     }
 
-    public static void buyFruit(String name, String amount) {
-        CustomerDao.buyFruit(name, amount);
+    public  void buyFruit(String name, String amount) {
+        fruitDao.buyFruit(name, amount);
     }
 }

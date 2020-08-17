@@ -8,6 +8,11 @@ import java.util.List;
 
 public class FruitDaoImpl implements FruitDao {
 
+     public void buyFruit(String name, String amount) {
+
+     }
+
+
     @Override
     public boolean addFruit(Fruit fruit) {
         return false;
