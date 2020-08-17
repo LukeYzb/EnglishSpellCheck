@@ -79,5 +79,8 @@ public class FruitDaoImpl implements FruitDao {
         boolean a = addFruit(fruit);
         return d && a;
     }
+
+    public void buyFruit(String name, String amount) {
+    }
 }
 

@@ -55,8 +55,8 @@ public class CustomerService {
         return flag;
     }
 
-    public void updateCustomer(String updateId, Customer newcustomer) throws IOException {
-        customerDao.updateCustomer(updateId, newcustomer);
+    public void updateCustomer(Customer newcustomer) throws IOException {
+        customerDao.updateCustomer(newcustomer);
     }
 
     public void deleteCustomerById(String delId) throws IOException {
