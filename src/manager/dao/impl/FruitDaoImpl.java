@@ -15,7 +15,7 @@ public class FruitDaoImpl implements FruitDao {
 
     @Override
     public List<Fruit> findAllFruit() {
-//        需要从读取的数组中获取
+    //需要从读取的数组中获取
         return null;
     }
 

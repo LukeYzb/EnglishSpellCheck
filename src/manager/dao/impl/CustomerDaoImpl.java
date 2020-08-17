@@ -13,9 +13,9 @@ public class CustomerDaoImpl implements CustomerDao {
     public void updateCustomer(String updateId, Customer newcustomer) throws IOException {
         //得到findAllCustomer的List
         List<Customer> allCustomer = findAllCustomer();
-        //        查找ID所在索引位置
+        //查找ID所在索引位置
         int index = getIndex(updateId);
-//        该索引位置替换
+        //该索引位置替换
         allCustomer.set(index, newcustomer);
     }
 
@@ -64,7 +64,6 @@ public class CustomerDaoImpl implements CustomerDao {
             customers.add(customer);
         }
         br.close();
-
         return customers;
     }
 
@@ -82,6 +81,5 @@ public class CustomerDaoImpl implements CustomerDao {
     public Customer getById(String id) {
         return null;
     }
-
 
 }

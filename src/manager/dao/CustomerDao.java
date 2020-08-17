@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface CustomerDao {
 
+    static void buyFruit(String name, String amount) {
+
+    }
+
     /**
      * 添加顾客对象
      * @param customer
