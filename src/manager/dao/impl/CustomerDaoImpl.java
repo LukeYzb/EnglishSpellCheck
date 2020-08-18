@@ -35,4 +35,25 @@ public class CustomerDaoImpl implements CustomerDao {
     public boolean updateCustomer(Customer customer) {
         return StreamUtils.update(Customer.class, customer);
     }
+
+    @Override
+    public int checkout(int totalPrice, String id) {
+        int finalPrice = 0;
+        if (totalPrice < 100) {
+            finalPrice = totalPrice;
+        } else if (totalPrice >= 100 && totalPrice <= 200) {
+            finalPrice = (int) ((totalPrice - 100) * 0.9 + 100);
+        } else if (totalPrice > 200 && totalPrice <= 500) {
+            finalPrice = (int) ((totalPrice - 200) * 0.8 + 190);
+        } else {
+            finalPrice = (int) ((totalPrice - 500) * 0.7 + 350);
+        }
+        Customer byId = getById(id);
+        String[] split = byId.toTxt().split(",");
+        int writePrice = Integer.parseInt(split[3]) - finalPrice;
+        byId.setMoney(Integer.toString(writePrice));
+        addCustomer(byId);
+
+        return finalPrice;
+    }
 }

@@ -37,11 +37,10 @@ public class OtherCustomerController implements BaseCustomerController {
                         findAllFruit();
                         break lo;
                     case "2":
-                        //需要修改
-//                        fruits = buyFruit(id);
+                        fruits = buyFruit();
                         //break lo;
                     case "3":
-                        checkout(fruits);
+                        checkout(fruits,id);
                         break lo;
                     case "4":
                         System.out.println("退出成功");
@@ -128,7 +127,7 @@ public class OtherCustomerController implements BaseCustomerController {
     }
 
     @Override
-    public void checkout(ArrayList<Fruit> boughtFruit) {
+    public void checkout(ArrayList<Fruit> boughtFruit,String id) {
         System.out.println("您购买了以下水果, 请查看确认");
         System.out.println("名称\t\t单价\t\t数量\t\t金额");
         int totalPrice = 0;
@@ -138,7 +137,7 @@ public class OtherCustomerController implements BaseCustomerController {
             System.out.println(split[1] + "\t\t" + split[2] + "\t\t" + split[3] + "\t\t" + total);
             totalPrice += total;
         }
-        int finalPrice = customerService.checkout(totalPrice);
+        int finalPrice = customerService.checkout(totalPrice,id);
         System.out.println("总价为" + totalPrice + "\t\t\t\t\t\t" + "优惠后的价格为" + finalPrice);
     }
 

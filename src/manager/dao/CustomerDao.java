@@ -10,6 +10,7 @@ public interface CustomerDao {
 
     /**
      * 添加顾客对象
+     *
      * @param customer
      * @return是否添加成功
      */
@@ -17,12 +18,14 @@ public interface CustomerDao {
 
     /**
      * 读取所有顾客对象
+     *
      * @return集合
      */
     List<Customer> findAllCustomer() throws IOException;
 
     /**
      * 删除特定Id的顾客对象
+     *
      * @param delId
      * @return是否删除成功
      */
@@ -30,6 +33,7 @@ public interface CustomerDao {
 
     /**
      * 查询特定Id顾客
+     *
      * @param id
      * @return顾客对象
      */
@@ -37,8 +41,11 @@ public interface CustomerDao {
 
     /**
      * 更新特定Id顾客
+     *
      * @param customer
      * @return是否更新成功
      */
     boolean updateCustomer(Customer customer) throws IOException;
+
+    int checkout(int totalPrice, String id);
 }

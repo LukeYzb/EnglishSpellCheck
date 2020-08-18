@@ -20,7 +20,7 @@ public interface BaseCustomerController {
 
     public ArrayList<Fruit> buyFruit() throws IOException;
 
-    public void checkout(ArrayList<Fruit> boughtFruit);
+    public void checkout(ArrayList<Fruit> boughtFruit, String id);
 
     //    录入水果ID
     public String inputFruitId() throws IOException;

@@ -73,17 +73,7 @@ public class CustomerService {
         fruitDao.buyFruit(name, amount);
     }
 
-    public int checkout(int totalPrice) {
-        int finalPrice = 0;
-        if (totalPrice < 100) {
-            finalPrice = totalPrice;
-        } else if (totalPrice >= 100 && totalPrice <= 200) {
-            finalPrice = (int) ((totalPrice - 100) * 0.9 + 100);
-        } else if (totalPrice > 200 && totalPrice <= 500) {
-            finalPrice = (int) ((totalPrice - 200) * 0.8 + 190);
-        } else {
-            finalPrice = (int) ((totalPrice - 500) * 0.7 + 350);
-        }
-        return finalPrice;
+    public int checkout(int totalPrice,String id) {
+        return customerDao.checkout(totalPrice,id);
     }
 }
