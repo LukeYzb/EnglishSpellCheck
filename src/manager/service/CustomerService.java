@@ -11,9 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CustomerService {
-    CustomerDaoImpl customerDaoImpl=new CustomerDaoImpl();
+    CustomerDaoImpl customerDaoImpl = new CustomerDaoImpl();
     private CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
-    FruitDaoImpl fruitDao=new FruitDaoImpl();
+    FruitDaoImpl fruitDao = new FruitDaoImpl();
 
 
     //判断顾客账号或者密码是否正确
@@ -38,10 +38,10 @@ public class CustomerService {
         return customerDao.addCustomer(customer);
     }
 
-    public  boolean isExists(String id) throws IOException {
+    public boolean isExists(String id) throws IOException {
 
 
-        Customer[] customers = customerDaoImpl.findAllCustomer().toArray(new Customer[0]);
+        Customer[] customers = customerDaoImpl.findAllCustomer().toArray(new Customer[100]);
         //假设id不存在
         boolean flag = false;
         //遍历数组
@@ -55,12 +55,12 @@ public class CustomerService {
         return flag;
     }
 
-    public void updateCustomer(Customer newcustomer) throws IOException {
-        customerDao.updateCustomer(newcustomer);
+    public boolean updateCustomer(Customer newcustomer) throws IOException {
+        return customerDao.updateCustomer(newcustomer);
     }
 
-    public void deleteCustomerById(String delId) throws IOException {
-        customerDao.deleteCustomerById(delId);
+    public boolean deleteCustomerById(String delId) throws IOException {
+        return customerDao.deleteCustomerById(delId);
     }
 
     public Customer[] findAllCustomer() throws IOException {
@@ -68,7 +68,7 @@ public class CustomerService {
         return customers;
     }
 
-    public  void buyFruit(String name, String amount) {
+    public void buyFruit(String name, String amount) {
         fruitDao.buyFruit(name, amount);
     }
 }

@@ -22,7 +22,7 @@ public class CustomerDaoImpl implements CustomerDao {
         //在List里添加参数customer
         allCustomer.add(customer);
         //将新的List写入IO流
-        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\customer.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(".\\customer.txt"));
         //list遍历,totxt
         for (Customer customer1 : allCustomer) {
             String s = customer1.toTxt();
@@ -34,7 +34,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Customer> findAllCustomer() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("fruitshop\\customer.txt"));
+        BufferedReader br = new BufferedReader(new FileReader(".\\customer.txt"));
         String s;
         List<Customer> customers = new ArrayList<>();
         while ((s = br.readLine()) != null) {
@@ -58,7 +58,7 @@ public class CustomerDaoImpl implements CustomerDao {
         //遍历list,删掉byId对象,得到一个新的list
         allCustomer.remove(byId);
         //将新的list写进本地customer文件中
-        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\customer.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(".\\customer.txt"));
         //list遍历,totxt
         for (Customer customer1 : allCustomer) {
             String s = customer1.toTxt();
