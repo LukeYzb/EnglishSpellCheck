@@ -319,8 +319,7 @@ public class OtherManagerController implements BaseManagerController {
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(delId);
-                    if (!exists) {//exists为负,则执行
-                        Customer customer = inputCustomerInfo(delId);
+                    if (exists) {//exists为负,则执行
                         boolean result = customerService.deleteCustomerById(delId);
 //        根据返回的bool结果显示是否成功
                         if (result) {
