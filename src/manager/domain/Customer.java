@@ -2,10 +2,10 @@ package manager.domain;
 
 public class Customer extends Obj {
     //password密码
-//    test，private改public，需要解决子类封装对象没有父类属性的问题
+    //test，private改public，需要解决子类封装对象没有父类属性的问题
     public String password;
     //money金额
-//    test，private改public，需要解决子类封装对象没有父类属性的问题
+    //test，private改public，需要解决子类封装对象没有父类属性的问题
     public String money;
 
     public Customer() {

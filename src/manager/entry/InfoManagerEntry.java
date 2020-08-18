@@ -23,19 +23,19 @@ public class InfoManagerEntry {
                 lo1:
                 switch (choice) {
                     case "1":
-//                        开启顾客系统
+                        //开启顾客系统
                         OtherCustomerController customerController = new OtherCustomerController();
                         customerController.start();
                         break lo;
                     case "2":
-//                        开启管理者系统
+                        //开启管理者系统
                         lo2:
                         while (true) {
                             OtherManagerController otherManagerController = new OtherManagerController();
                             System.out.println("请输入管理员账号：");
                             String account = sc.next();
                             boolean isManager1 = otherManagerController.logInAccount(account);
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 if (isManager1==false) {//账号不存在
@@ -58,7 +58,8 @@ public class InfoManagerEntry {
                             boolean isManager2 = otherManagerController.logInPassword(passwd);
                             l2:
                             while (true) {
-                                if (isManager2==false) {//密码不存在
+                                //密码不存在
+                                if (isManager2==false) {
                                     System.out.println("密码不存在，退出请输入exit，不退出请重新输入密码：");
                                     String exit;
                                     exit = sc.next();

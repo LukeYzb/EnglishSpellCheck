@@ -5,6 +5,7 @@ import manager.dao.CustomerDao;
 import manager.dao.impl.CustomerDaoImpl;
 import manager.dao.impl.FruitDaoImpl;
 import manager.domain.Customer;
+import manager.domain.Fruit;
 import manager.factory.CustomerDaoFactory;
 
 import java.io.IOException;
@@ -32,8 +33,6 @@ public class CustomerService {
     }
 
     public boolean addCustomer(Customer customer) throws IOException {
-        //顾客对象交给CustomerDao库管
-        //CustomerDao customerDao=new CustomerDao();
         //库管来找顾客是否存在
         return customerDao.addCustomer(customer);
     }
@@ -68,7 +67,13 @@ public class CustomerService {
     }
 
     public  void buyFruit(String name, String amount) throws IOException {
+        Fruit[] fruits = fruitDao.findAllFruit().toArray(new Fruit[0]);
+        for (int i = 0; i < fruits.length; i++) {
+            Fruit fruit=fruits[i];
+            if(fruit.getName().equals(name)){
 
+            }
+        }
         fruitDao.buyFruit(name, amount);
     }
 }

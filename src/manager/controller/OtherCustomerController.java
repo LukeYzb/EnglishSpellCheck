@@ -18,11 +18,10 @@ public class OtherCustomerController implements BaseCustomerController {
     Customer customer=new Customer();
     Scanner sc = new Scanner(System.in);
 
-    //    开启顾客购买系统，展示菜单
+    //开启顾客购买系统，展示菜单
     public void start() throws IOException {
         l:
         while (true) {
-            //①②③④⑤
             System.out.println("-----------欢迎使用顾客购买功能!-----------");
             System.out.print("①登录");
             System.out.print("\t②查看水果");
@@ -43,7 +42,7 @@ public class OtherCustomerController implements BaseCustomerController {
                         break lo;
                     case "3":
                         buyFruit();
-                        //break lo;
+                        break lo;
                     case "4":
                         checkout();
                         break lo;
@@ -62,9 +61,9 @@ public class OtherCustomerController implements BaseCustomerController {
     public void logIn() throws IOException {
         CustomerService customerService = new CustomerService();
         while (true) {
-            System.out.println("请输入账户");
+            System.out.println("请输入账户:");
             String id = sc.next();
-            System.out.println("请输入密码");
+            System.out.println("请输入密码:");
             String password = sc.next();
             boolean flag = customerService.isExist(id, password);
             if (!flag) {
@@ -98,25 +97,23 @@ public class OtherCustomerController implements BaseCustomerController {
         CustomerService customer = new CustomerService();
         FruitService fruitService=new FruitService();
         lock: while (true) {
-            lo:
-            while(true){
+            lo2: while(true){
                 System.out.println("请输入你要购买的水果");
                 String name = sc.next();
                 boolean exists = fruitService.isExist(name);
                 if(!exists){
                     System.out.println("你输入的水果不存在，重新输入");
-                    break lo;
+                    break lo2;
                 }
                 System.out.println("请输入你要购买的数量");
                 String amount = sc.next();
                 System.out.println("是否继续购买Y/N");
                 String go = sc.next();
                 customer.buyFruit(name, amount);
-                if (go == "Y") {
-                    continue;
-                } else if(go == "y"){
-                    continue ;
+                if (go.equalsIgnoreCase("Y")) {
+                    break lo2;
                 } else{
+                    System.out.println("购物结束，请结账");
                     break lock;
                 }
             }
@@ -136,24 +133,23 @@ public class OtherCustomerController implements BaseCustomerController {
         }
         String amount = Integer.toString(total);
         System.out.println("您一共消费" + total);
-//        获取水果账单
-
+    //获取水果账单
     }
 
-
-    //    录入水果ID，可以用在buyFruit功能里
+    //录入水果ID，可以用在buyFruit功能里
     public String inputFruitId() throws IOException {
         String Id = null;
         l:
         while (true) {
-            System.out.println("请输入水果的ID：");
+            System.out.println("请输入水果的账号：");
             Id = sc.next();
-//            判断ID是否存在
+            //判断ID是否存在
             l1:
             while (true) {
                 boolean exists = customerService.isExists(Id);
-                if (!exists) {//exists为负,则执行
-                    System.out.println("ID不存在，退出请输入0，不退出请重新输入ID：");
+                //exists为负,则执行
+                if (!exists) {
+                    System.out.println("账号不存在，退出请输入0，不退出请重新输入账号：");
                     int exit;
                     exit = sc.nextInt();
                     if (exit == 0) {

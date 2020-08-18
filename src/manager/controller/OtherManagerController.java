@@ -19,14 +19,15 @@ public class OtherManagerController implements BaseManagerController {
     private FruitService fruitService = new FruitService();
     private Scanner sc = new Scanner(System.in);
 
-    //    管理员登录账户判断
+    //管理员登录账户判断
     public boolean logInAccount(String id) throws IOException {
         boolean isManager1 = false;
-//            判断ID是否存在
+        //判断ID是否存在
         l:
         while (true) {
             boolean exists1 = ManagerService.idIsExists(id);
-            if (!exists1) {//exists为负,则执行
+            //exists为负,则执行
+            if (!exists1) {
                 break l;
             } else {
                 isManager1 = true;
@@ -36,13 +37,14 @@ public class OtherManagerController implements BaseManagerController {
         return isManager1;
     }
 
-    //    管理员登录密码判断
+    //管理员登录密码判断
     public boolean logInPassword(String passwd) throws IOException {
         boolean isManager2 = false;
         l:
         while (true) {
             boolean exists2 = ManagerService.passwdIsExists(passwd);
-            if (!exists2) {//exists为负,则执行
+            //exists为负,则执行
+            if (!exists2) {
                 break l;
             } else {
                 isManager2 = true;
@@ -53,7 +55,7 @@ public class OtherManagerController implements BaseManagerController {
         return isManager2;
     }
 
-    //    开启老师管理系统，展示菜单
+    //开启老师管理系统，展示菜单
     public void start() throws IOException {
         l:
         while (true) {
@@ -75,7 +77,7 @@ public class OtherManagerController implements BaseManagerController {
                         break lo;
                     case "3":
                         System.out.println("退出成功！");
-//                        退出当前正在运行的JVM虚拟机
+                        //退出当前正在运行的JVM虚拟机
                         break l;
                     default:
                         System.out.print("输入有误，请重新输入。");
@@ -90,11 +92,10 @@ public class OtherManagerController implements BaseManagerController {
     public void manageCustomer() throws IOException {
         l:
         while (true) {
-//            ①②③④⑤
             System.out.println("----------欢迎使用顾客管理功能----------");
             System.out.print("①注册新用户");
             System.out.print("\t②编辑现用户");
-//            扩展了删除用户
+            //扩展了删除用户
             System.out.print("\t③删除现用户");
             System.out.println("\t④退出");
             System.out.print("请输入要选择的操作（1~4）：");
@@ -132,13 +133,13 @@ public class OtherManagerController implements BaseManagerController {
 
     private void findAllCustomer() throws IOException {
         Customer[] customers = customerService.findAllCustomer();
-//        判断数组是否为空
+        //判断数组是否为空
         if (customers == null) {
             System.out.println("查无信息，请添加后重试。");
             return;
         }
-//        遍历数组打印顾客信息
-        System.out.println("ID\t\t姓名\t密码\t\t余额");
+        //遍历数组打印顾客信息
+        System.out.println("账号\t\t姓名\t密码\t\t余额");
         for (int i = 0; i < customers.length; i++) {
             Customer customer = customers[i];
             if (customer != null) {
@@ -149,12 +150,12 @@ public class OtherManagerController implements BaseManagerController {
 
 
     public void addCustomer() throws IOException {
-//        局部变量id
+        //局部变量id
         String addId = inputCustomerId();
         if (addId != null) {
             l:
             while (true) {
-//            判断ID是否存在
+            //判断ID是否存在
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(addId);
@@ -171,11 +172,11 @@ public class OtherManagerController implements BaseManagerController {
                     } else {
                         Customer customer = inputCustomerInfo(addId);
                         boolean result = customerService.addCustomer(customer);
-//        根据返回的bool结果显示添加是否成功
+                        //根据返回的bool结果显示添加是否成功
                         if (result) {
-                            System.out.println("添加成功。");
+                            System.out.println("添加成功");
                         } else {
-                            System.out.println("添加失败。");
+                            System.out.println("添加失败");
                         }
                         break l;
                     }
@@ -187,7 +188,7 @@ public class OtherManagerController implements BaseManagerController {
     private void customerManagement() throws IOException {
         l:
         while (true) {
-//            ①②③④⑤
+            //①②③④⑤
             System.out.print("①充值");
             System.out.print("\t②改名");
             System.out.print("\t③改密码");
@@ -202,18 +203,15 @@ public class OtherManagerController implements BaseManagerController {
                         li:
                         while (true) {
                             String updateId = inputCustomerId();
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = customerService.isExists(updateId);
-//                                test
-//                                System.out.println(exists);
-                                if (exists) {//exists为负,则执行
+                                //exists为负,则执行
+                                if (exists) {
                                     Customer customer = inputCustomerMoney(updateId);
-//                                    test
-//                                    System.out.println(customer);
                                     boolean result = customerService.updateCustomer(customer);
-//        根据返回的bool结果显示是否成功
+                                    //根据返回的bool结果显示是否成功
                                     if (result) {
                                         System.out.println("修改成功。");
                                     } else {
@@ -238,14 +236,15 @@ public class OtherManagerController implements BaseManagerController {
                         lii:
                         while (true) {
                             String updateId = inputCustomerId();
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = customerService.isExists(updateId);
-                                if (exists) {//exists为负,则执行
+                                //exists为负,则执行
+                                if (exists) {
                                     Customer customer = inputCustomerName(updateId);
                                     boolean result = customerService.updateCustomer(customer);
-//        根据返回的bool结果显示是否成功
+                                    //根据返回的bool结果显示是否成功
                                     if (result) {
                                         System.out.println("修改成功。");
                                     } else {
@@ -270,14 +269,15 @@ public class OtherManagerController implements BaseManagerController {
                         liii:
                         while (true) {
                             String updateId = inputCustomerId();
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = customerService.isExists(updateId);
-                                if (exists) {//exists为负,则执行
+                                //exists为负,则执行
+                                if (exists) {
                                     Customer customer = inputCustomerPasswd(updateId);
                                     boolean result = customerService.updateCustomer(customer);
-//        根据返回的bool结果显示是否成功
+                                    //根据返回的bool结果显示是否成功
                                     if (result) {
                                         System.out.println("修改成功。");
                                     } else {
@@ -300,7 +300,7 @@ public class OtherManagerController implements BaseManagerController {
                         break lo;
                     case "4":
                         System.out.println("退出成功！");
-//                        退出当前正在运行的JVM虚拟机
+                        //退出当前正在运行的JVM虚拟机
                         break l;
                     default:
                         System.out.print("输入有误，请重新输入。");
@@ -315,13 +315,13 @@ public class OtherManagerController implements BaseManagerController {
         if (delId != null) {
             l:
             while (true) {
-//            判断ID是否存在
+                //判断ID是否存在
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(delId);
                     if (exists) {//exists为负,则执行
                         boolean result = customerService.deleteCustomerById(delId);
-//        根据返回的bool结果显示是否成功
+                        //根据返回的bool结果显示是否成功
                         if (result) {
                             System.out.println("删除成功。");
                         } else {
@@ -348,11 +348,11 @@ public class OtherManagerController implements BaseManagerController {
     public void manageFruit() throws IOException {
         l:
         while (true) {
-//            ①②③④⑤
+            //①②③④⑤
             System.out.println("----------欢迎使用水果管理功能!----------");
             System.out.print("①添加水果");
             System.out.print("\t②修改水果数据");
-//            扩展了删除水果
+            //扩展了删除水果
             System.out.print("\t③删除水果数据");
             System.out.println("\t④返回上一层");
             System.out.print("请输入要选择的操作（1~4）：");
@@ -389,13 +389,13 @@ public class OtherManagerController implements BaseManagerController {
 
     private void findAllFruits() throws IOException {
         ArrayList<Fruit> fruits = fruitService.findAllFruit();
-//        判断数组是否为空
+        //判断数组是否为空
         if (fruits == null) {
             System.out.println("查无信息，请添加后重试。");
             return;
         }
-//        遍历数组打印顾客信息
-        System.out.println("ID\t\t名称\t价格\t\t库存");
+        //遍历数组打印顾客信息
+        System.out.println("编号\t\t名称\t价格\t\t库存");
         for (Fruit fruit : fruits) {
             System.out.println(fruit.toTxt());
 
@@ -407,13 +407,14 @@ public class OtherManagerController implements BaseManagerController {
         if (delId != null) {
             l:
             while (true) {
-//            判断ID是否存在
+            //判断ID是否存在
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(delId);
-                    if (!exists) {//exists为负,则执行
+                    //exists为负,则执行
+                    if (!exists) {
                         boolean result = fruitService.deleteFruitById(delId);
-//        根据返回的bool结果显示是否成功
+                        //根据返回的bool结果显示是否成功
                         if (result) {
                             System.out.println("删除成功。");
                         } else {
@@ -439,7 +440,7 @@ public class OtherManagerController implements BaseManagerController {
     private void changeFruits() throws IOException {
         l:
         while (true) {
-//            ①②③④⑤
+            //①②③④⑤
             System.out.print("①修改价格");
             System.out.print("\t②修改库存");
             System.out.print("\t③修改名称");
@@ -456,14 +457,14 @@ public class OtherManagerController implements BaseManagerController {
                             String updateId = inputFruitId();
                             System.out.println("请输入水果的ID：");
                             updateId = sc.next();
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = fruitService.isExists(updateId);
                                 if (!exists) {//exists为负,则执行
                                     Fruit fruit = inputFruitPrice(updateId);
                                     boolean result = fruitService.updateFruit(fruit);
-//        根据返回的bool结果显示添加是否成功
+                                    //根据返回的bool结果显示添加是否成功
                                     if (result) {
                                         System.out.println("修改成功。");
                                     } else {
@@ -488,14 +489,15 @@ public class OtherManagerController implements BaseManagerController {
                         lii:
                         while (true) {
                             String updateId = inputCustomerId();
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = fruitService.isExists(updateId);
-                                if (exists) {//exists为负,则执行
+                                //exists为负,则执行
+                                if (exists) {
                                     Fruit fruit = inputFruitAmount(updateId);
                                     boolean result = fruitService.updateFruit(fruit);
-//        根据返回的bool结果显示添加是否成功
+                                    //根据返回的bool结果显示添加是否成功
                                     if (result) {
                                         System.out.println("修改成功。");
                                     } else {
@@ -520,14 +522,14 @@ public class OtherManagerController implements BaseManagerController {
                         liii:
                         while (true) {
                             String updateId = inputCustomerId();
-//            判断ID是否存在
+                            //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = fruitService.isExists(updateId);
                                 if (exists) {//exists为负,则执行
                                     Fruit fruit = inputFruitName(updateId);
                                     boolean result = fruitService.updateFruit(fruit);
-//        根据返回的bool结果显示添加是否成功
+                                    //根据返回的bool结果显示添加是否成功
                                     if (result) {
                                         System.out.println("修改成功。");
                                     } else {
@@ -550,7 +552,7 @@ public class OtherManagerController implements BaseManagerController {
                         break lo;
                     case "4":
                         System.out.println("退出成功！");
-//                        退出当前正在运行的JVM虚拟机
+                        //退出当前正在运行的JVM虚拟机
                         break l;
                     default:
                         System.out.print("输入有误，请重新输入。");
@@ -565,7 +567,7 @@ public class OtherManagerController implements BaseManagerController {
         if (addId != null) {
             l:
             while (true) {
-//            判断ID是否存在
+                //判断ID是否存在
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(addId);
@@ -582,7 +584,7 @@ public class OtherManagerController implements BaseManagerController {
                     } else {
                         Fruit fruit = inputFruitInfo(addId);
                         boolean result = fruitService.addFruit(fruit);
-//        根据返回的bool结果显示添加是否成功
+                        //根据返回的bool结果显示添加是否成功
                         if (result) {
                             System.out.println("添加成功。");
                         } else {
@@ -595,7 +597,7 @@ public class OtherManagerController implements BaseManagerController {
         }
     }
 
-    //    录入顾客ID，可以用来判断id是否存在，返回String的ID值或null
+    //录入顾客ID，可以用来判断id是否存在，返回String的ID值或null
     public String inputCustomerId() {
         String Id = null;
         System.out.println("请输入顾客的ID：");
@@ -603,7 +605,7 @@ public class OtherManagerController implements BaseManagerController {
         return Id;
     }
 
-    //    录入水果ID，可以用来判断id是否存在，返回String的ID值或null
+    //录入水果ID，可以用来判断id是否存在，返回String的ID值或null
     public String inputFruitId() {
         String Id = null;
         System.out.println("请输入水果的ID：");
@@ -611,12 +613,12 @@ public class OtherManagerController implements BaseManagerController {
         return Id;
     }
 
-    //    更改顾客姓名、密码和充值金额
+    //更改顾客姓名、密码和充值金额
     public Customer inputCustomerName(String id) throws IOException {
-        //            根据ID修改顾客
+        //根据ID修改顾客
         System.out.println("请输入顾客姓名：");
         String name = sc.next();
-//        获取对应顾客的余额
+        //获取对应顾客的余额
         CustomerDaoImpl newcustomer1 = new CustomerDaoImpl();
         String originamount = "0";
         String passwd = "";
@@ -627,18 +629,18 @@ public class OtherManagerController implements BaseManagerController {
                 passwd = customer.getPassword();
             }
         }
-//        封装顾客对象并返回
+        //封装顾客对象并返回
         Customer newcustomer = new Customer(id, name, passwd, originamount);
         return newcustomer;
     }
 
     public Customer inputCustomerPasswd(String id) throws IOException {
-        //            根据ID修改顾客
+        //根据ID修改顾客
         System.out.println("请输入顾客密码：");
         String passwd = sc.next();
         String name = "";
         String amount = "0";
-//        获取对应顾客的除密码外其他属性
+        //获取对应顾客的除密码外其他属性
         CustomerDaoImpl newcustomer1 = new CustomerDaoImpl();
         List<Customer> customers = newcustomer1.findAllCustomer();
         for (Customer customer : customers) {
@@ -647,20 +649,20 @@ public class OtherManagerController implements BaseManagerController {
                 name = customer.getName();
             }
         }
-//        封装顾客对象并返回
+        //封装顾客对象并返回
         Customer newcustomer = new Customer(id, name, passwd, amount);
         return newcustomer;
     }
 
     public Customer inputCustomerMoney(String id) throws IOException {
-        //            根据ID修改顾客
+        //根据ID修改顾客
         String passwd = "";
         String name = "";
         System.out.println("请输入充值金额：");
         String amount = sc.next();
-//        String金额强转int
+        //String金额强转int
         int amo = Integer.parseInt(amount);
-//        获取对应顾客的余额、姓名和密码
+        //获取对应顾客的余额、姓名和密码
         CustomerDaoImpl newcustomer1 = new CustomerDaoImpl();
         String originamount = "0";
         List<Customer> customers = newcustomer1.findAllCustomer();
@@ -672,36 +674,29 @@ public class OtherManagerController implements BaseManagerController {
             }
         }
 
-//        String金额强转int
+        //String金额强转int
         int oriamo = Integer.parseInt(originamount);
-//        充值金额加上原来金额=总金额
+        //充值金额加上原来金额=总金额
         oriamo = amo + oriamo;
-//        int金额强转String
+        //int金额强转String
         amount = String.valueOf(oriamo);
-//test
-//        System.out.println(id);
-//        System.out.println(name);
-//        System.out.println(passwd);
-//        System.out.println(amount);
         //        封装顾客对象并返回
         Customer newcustomer = new Customer(id, name, passwd, amount);
-//        test
-//        System.out.println(newcustomer);
         return newcustomer;
     }
 
-    //    用来添加顾客，一次输入全部属性
+    //用来添加顾客，一次输入全部属性
     public Customer inputCustomerInfo(String id) throws IOException {
-        //            根据ID修改顾客
+        //根据ID修改顾客
         System.out.println("请输入顾客密码：");
         String passwd = sc.next();
         System.out.println("请输入顾客姓名：");
         String name = sc.next();
         System.out.println("请输入充值金额：");
         String amount = sc.next();
-//        String金额强转int
+        //String金额强转int
         int amo = Integer.parseInt(amount);
-//        获取对应顾客的余额
+        //获取对应顾客的余额
         CustomerDaoImpl newcustomer1 = new CustomerDaoImpl();
         String originamount = "0";
         List<Customer> customers = newcustomer1.findAllCustomer();
@@ -710,23 +705,23 @@ public class OtherManagerController implements BaseManagerController {
                 originamount = customer.getMoney();
             }
         }
-//        String金额强转int
+        //String金额强转int
         int oriamo = Integer.parseInt(originamount);
-//        充值金额加上原来金额=总金额
+        //充值金额加上原来金额=总金额
         oriamo = amo + oriamo;
-//        int金额强转String
+        //int金额强转String
         amount = String.valueOf(oriamo);
-        //        封装顾客对象并返回
+        //封装顾客对象并返回
         Customer newcustomer = new Customer(id, name, passwd, amount);
         return newcustomer;
     }
 
-    //    可以用来输入水果名称、价格和库存
+    //可以用来输入水果名称、价格和库存
     public Fruit inputFruitName(String id) throws IOException {
-        //            根据ID修改水果
+        //根据ID修改水果
         System.out.println("请输入水果名称：");
         String name = sc.next();
-//        获取对应水果的除名称外其他信息
+        //获取对应水果的除名称外其他信息
         FruitDaoImpl newfruit1 = new FruitDaoImpl();
         String originamount = "0";
         String price = "0";
@@ -737,16 +732,16 @@ public class OtherManagerController implements BaseManagerController {
                 price = fruit.getPrice();
             }
         }
-//        将键盘录入信息封装为水果对象
+        //将键盘录入信息封装为水果对象
         Fruit newfruit = new Fruit(id, name, price, originamount);
         return newfruit;
     }
 
     public Fruit inputFruitPrice(String id) throws IOException {
-        //            根据ID修改水果
+        //根据ID修改水果
         System.out.println("请输入水果价格：");
         String price = sc.next();
-//        获取对应水果的除价格外其他信息
+        //获取对应水果的除价格外其他信息
         FruitDaoImpl newfruit1 = new FruitDaoImpl();
         String originamount = "0";
         String name = "";
@@ -757,16 +752,16 @@ public class OtherManagerController implements BaseManagerController {
                 name = fruit.getName();
             }
         }
-//        将键盘录入信息封装为水果对象
+        //将键盘录入信息封装为水果对象
         Fruit newfruit = new Fruit(id, name, price, originamount);
         return newfruit;
     }
 
     public Fruit inputFruitAmount(String id) throws IOException {
-        //            根据ID修改水果
+        //根据ID修改水果
         System.out.println("请输入水果库存：");
         String amount = sc.next();
-//        获取对应水果的除库存外其他信息
+        //获取对应水果的除库存外其他信息
         FruitDaoImpl newfruit1 = new FruitDaoImpl();
         String name = "";
         String price = "0";
@@ -777,21 +772,21 @@ public class OtherManagerController implements BaseManagerController {
                 price = fruit.getPrice();
             }
         }
-//        将键盘录入信息封装为水果对象
+        //将键盘录入信息封装为水果对象
         Fruit newfruit = new Fruit(id, name, price, amount);
         return newfruit;
     }
 
-    //    用来添加水果，一次输入全部属性
+    //用来添加水果，一次输入全部属性
     public Fruit inputFruitInfo(String id) {
-        //            根据ID修改顾客
+        //根据ID修改顾客
         System.out.println("请输入水果名称：");
         String name = sc.next();
         System.out.println("请输入水果价格：");
         String price = sc.next();
         System.out.println("请输入水果库存：");
         String amount = sc.next();
-//        将键盘录入信息封装为水果对象
+        //将键盘录入信息封装为水果对象
         Fruit newfruit = new Fruit(id, name, price, amount);
         return newfruit;
     }
