@@ -131,7 +131,7 @@ public class OtherManagerController implements BaseManagerController {
                         break lo;
                     case "2":
                         findAllCustomer();
-                        Customermanagement();
+                        //Customermanagement();
                         break lo;
                     case "3":
                         findAllCustomer();
@@ -204,14 +204,14 @@ public class OtherManagerController implements BaseManagerController {
         }
     }
 
-    private void Customermanagement() throws IOException {
+    /*private void Customermanagement() throws IOException {
         String updateId = inputCustomerId();
         if (updateId != null) {
             Customer newcustomer = inputCustomerInfo(updateId);
             customerService.updateCustomer(updateId, newcustomer);
             System.out.println("修改成功！");
         }
-    }
+    }*/
 
     private void deleteCustomer() throws IOException {
         String delId = inputCustomerId();
@@ -245,11 +245,11 @@ public class OtherManagerController implements BaseManagerController {
                         break lo;
                     case "2":
                         findAllFruits();
-                        changeFruits();
+                        //changeFruits();
                         break lo;
                     case "3":
                         findAllFruits();
-                        deleteFruits();
+                        //deleteFruits();
                         break lo;
                     case "4":
                         System.out.println("退出成功！");
@@ -262,7 +262,7 @@ public class OtherManagerController implements BaseManagerController {
         }
     }
 
-    private void findAllFruits() {
+    private void findAllFruits() throws IOException {
         ArrayList<Fruit> fruits = fruitService.findAllFruit();
 //        判断数组是否为空
         if (fruits == null) {
@@ -277,23 +277,23 @@ public class OtherManagerController implements BaseManagerController {
         }
     }
 
-    private void deleteFruits() throws IOException {
+/*    private void deleteFruits() throws IOException {
         String delId = inputFruitId();
         if (delId != null) {
             //            根据ID删除水果
             FruitService.deleteFruitById(delId);
             System.out.println("删除成功！");
         }
-    }
+    }*/
 
-    private void changeFruits() throws IOException {
+ /*   private void changeFruits() throws IOException {
         String updateId = inputFruitId();
         if (updateId != null) {
             Fruit newfruit = inputFruitInfo(updateId);
             FruitService.updateFruit(updateId, newfruit);
             System.out.println("修改成功！");
         }
-    }
+    }*/
 
     private void addFruit() {
         System.out.println("addFruit");

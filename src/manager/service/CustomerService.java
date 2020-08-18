@@ -9,27 +9,29 @@ import manager.factory.CustomerDaoFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CustomerService {
     CustomerDaoImpl customerDaoImpl=new CustomerDaoImpl();
     private CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
     FruitDaoImpl fruitDao=new FruitDaoImpl();
 
-
     //判断顾客账号或者密码是否正确
     public boolean isExist(String id, String password) throws IOException {
-
-        ArrayList<Customer> customers = (ArrayList<Customer>) customerDao.findAllCustomer();
-        for (int i = 0; i < customers.size(); i++) {
-            //customers.toString();
-            //Customer customer = Customer.toObj(customers);
-        }
+        ArrayList<Customer> customers= (ArrayList<Customer>) customerDaoImpl.findAllCustomer();
+        boolean flag=false;
+        lo:
         for (Customer customer : customers) {
-
+            String s = customer.toTxt();
+            String[] split=s.split(",");
+            System.out.println(split[0]+"--"+split[2]);
+            if(id.equals(split[0])&& password.equals(split[2])){
+                flag=true;
+                break lo;
+            }
         }
-        return false;
+        return flag;
     }
-
 
     public boolean addCustomer(Customer customer) throws IOException {
         //顾客对象交给CustomerDao库管
@@ -39,7 +41,6 @@ public class CustomerService {
     }
 
     public  boolean isExists(String id) throws IOException {
-
 
         Customer[] customers = customerDaoImpl.findAllCustomer().toArray(new Customer[0]);
         //假设id不存在

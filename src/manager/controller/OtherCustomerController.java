@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OtherCustomerController implements BaseCustomerController {
-     FruitService customerService = new FruitService();
-     Scanner sc = new Scanner(System.in);
+    FruitService customerService = new FruitService();
+    Scanner sc = new Scanner(System.in);
 
     //    开启顾客购买系统，展示菜单
     public void start() throws IOException {
         l:
         while (true) {
-             //①②③④⑤
+            //①②③④⑤
             System.out.println("-----------欢迎使用顾客购买功能!-----------");
             System.out.print("①登录");
             System.out.print("\t②查看水果");
@@ -55,14 +55,14 @@ public class OtherCustomerController implements BaseCustomerController {
 
     @Override
     public void logIn() throws IOException {
-        CustomerService customerService=new CustomerService();
-        while (true){
+        CustomerService customerService = new CustomerService();
+        while (true) {
             System.out.println("请输入账户");
-            String id=sc.next();
+            String id = sc.next();
             System.out.println("请输入密码");
-            String password=sc.next();
-            boolean flag=customerService.isExist(id,password);
-            if (flag) {
+            String password = sc.next();
+            boolean flag = customerService.isExist(id, password);
+            if (!flag) {
                 System.out.println("账号或者密码有误");
             } else {
                 System.out.println("登录成功");
@@ -72,7 +72,7 @@ public class OtherCustomerController implements BaseCustomerController {
     }
 
     @Override
-    public void findAllFruit() {
+    public void findAllFruit() throws IOException {
         ArrayList<Fruit> fruits = FruitService.findAllFruit();
 //        判断数组是否为空
         if (fruits == null) {
@@ -80,15 +80,16 @@ public class OtherCustomerController implements BaseCustomerController {
             return;
         }
 //        遍历数组打印学生信息
-        System.out.println("编号\t\t名称\t价格\t\t库存量");
-        for (Fruit fruit : fruits) {
-            System.out.println(fruit.toTxt());
-        }
+        System.out.println("编号\t\t\t名称\t\t价格\t\t库存量");
 
+        for (Fruit fruit : fruits) {
+            System.out.println(fruit.toShow());
+        }
     }
+
     @Override
     public void buyFruit() {
-        CustomerService customer=new CustomerService();
+        CustomerService customer = new CustomerService();
         lo:
         while (true) {
             System.out.println("请输入你要购买的水果");
@@ -97,7 +98,7 @@ public class OtherCustomerController implements BaseCustomerController {
             String amount = sc.next();
             System.out.println("是否继续购买Y/N");
             String go = sc.next();
-            customer.buyFruit(name,amount);
+            customer.buyFruit(name, amount);
             if (go == "Y") {
                 continue;
             } else {
@@ -108,12 +109,12 @@ public class OtherCustomerController implements BaseCustomerController {
 
     @Override
     public void checkout() {
-     //需要修改，添加结账后显示账单（同乐）
+        //需要修改，添加结账后显示账单（同乐）
     }
 
 
     //    录入水果ID，可以用在buyFruit功能里
-    public String inputFruitId() {
+    public String inputFruitId() throws IOException {
         String Id = null;
         l:
         while (true) {

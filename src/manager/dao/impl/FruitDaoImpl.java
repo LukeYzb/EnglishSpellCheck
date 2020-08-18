@@ -18,7 +18,7 @@ public class FruitDaoImpl implements FruitDao {
         }
         List<Fruit> allFruit = findAllFruit();
         allFruit.add(fruit);
-        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\fruit.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("E:\\fruitshop\\fruit.txt"));
         for (Fruit fruit1 : allFruit) {
             String s = fruit1.toTxt();
             bw.write(s);
@@ -29,7 +29,7 @@ public class FruitDaoImpl implements FruitDao {
 
     @Override
     public List<Fruit> findAllFruit() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("fruitshop\\fruit.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("E:\\fruitshop\\fruit.txt"));
         String s;
         List<Fruit> fruits = new ArrayList<>();
         while ((s = br.readLine()) != null) {
@@ -48,7 +48,7 @@ public class FruitDaoImpl implements FruitDao {
         }
         List<Fruit> allFruit = findAllFruit();
         allFruit.remove(byId);
-        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\fruit.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("E:\\fruitshop\\fruit.txt"));
         for (Fruit fruit : allFruit) {
             String s = fruit.toTxt();
             bw.write(s);
