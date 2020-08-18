@@ -68,9 +68,8 @@ public class CustomerService {
         return customers;
     }
 
-    public void buyFruit(String name, String amount) throws IOException {
-
-        fruitDao.buyFruit(name, amount);
+    public boolean buyFruit(String name, String amount) throws IOException {
+        return fruitDao.buyFruit(name, amount);
     }
 
     public int checkout(int totalPrice,String id) {

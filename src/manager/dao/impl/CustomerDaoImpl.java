@@ -52,7 +52,7 @@ public class CustomerDaoImpl implements CustomerDao {
         String[] split = byId.toTxt().split(",");
         int writePrice = Integer.parseInt(split[3]) - finalPrice;
         byId.setMoney(Integer.toString(writePrice));
-        addCustomer(byId);
+        updateCustomer(byId);
 
         return finalPrice;
     }

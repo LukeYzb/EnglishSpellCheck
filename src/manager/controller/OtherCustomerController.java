@@ -40,7 +40,7 @@ public class OtherCustomerController implements BaseCustomerController {
                         fruits = buyFruit();
                         //break lo;
                     case "3":
-                        checkout(fruits,id);
+                        checkout(fruits, id);
                         break lo;
                     case "4":
                         System.out.println("退出成功");
@@ -55,7 +55,7 @@ public class OtherCustomerController implements BaseCustomerController {
 
     @Override
     public String logIn() throws IOException {
-        String id=null;
+        String id = null;
         CustomerService customerService = new CustomerService();
         System.out.println("请先登录！");
         while (true) {
@@ -66,7 +66,7 @@ public class OtherCustomerController implements BaseCustomerController {
             boolean flag = customerService.isExist(id, password);
             if (flag) {
                 break;
-            }else {
+            } else {
                 System.out.println("账户或密码错误，请重新输入，或者找管理员注册账户！");
             }
         }
@@ -107,10 +107,18 @@ public class OtherCustomerController implements BaseCustomerController {
                     System.out.println("你输入的水果不存在，重新输入");
                     break lo;
                 }
-                System.out.println("请输入你要购买的数量");
-                String amount = sc.next();
-                byName.setAmount(amount);
-                customer.buyFruit(name, amount);
+                lo1:
+                while(true) {
+                    System.out.println("请输入你要购买的数量");
+                    String amount = sc.next();
+                    byName.setAmount(amount);
+                    boolean amountOutOfRange = customer.buyFruit(name, amount);
+                    if(amountOutOfRange){
+                        break lo1;
+                    }else {
+                        System.out.println("库存不足！");
+                    }
+                }
                 boughtFruit.add(byName);
                 System.out.println("是否继续购买Y/N");
                 String go = sc.next();
@@ -127,7 +135,7 @@ public class OtherCustomerController implements BaseCustomerController {
     }
 
     @Override
-    public void checkout(ArrayList<Fruit> boughtFruit,String id) {
+    public void checkout(ArrayList<Fruit> boughtFruit, String id) {
         System.out.println("您购买了以下水果, 请查看确认");
         System.out.println("名称\t\t单价\t\t数量\t\t金额");
         int totalPrice = 0;
@@ -137,7 +145,7 @@ public class OtherCustomerController implements BaseCustomerController {
             System.out.println(split[1] + "\t\t" + split[2] + "\t\t" + split[3] + "\t\t" + total);
             totalPrice += total;
         }
-        int finalPrice = customerService.checkout(totalPrice,id);
+        int finalPrice = customerService.checkout(totalPrice, id);
         System.out.println("总价为" + totalPrice + "\t\t\t\t\t\t" + "优惠后的价格为" + finalPrice);
     }
 
