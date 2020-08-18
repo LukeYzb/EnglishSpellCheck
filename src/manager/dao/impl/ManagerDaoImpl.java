@@ -1,8 +1,10 @@
 package manager.dao.impl;
 
 import manager.dao.ManagerDao;
+import manager.domain.Customer;
 import manager.domain.Fruit;
 import manager.domain.Manager;
+import manager.util.StreamUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         List<Manager> allManager = findAllManager();
         allManager.add(manager);
-        BufferedWriter bw = new BufferedWriter(new FileWriter(".\\manager.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\manager.txt"));
         for (Manager manager1 : allManager) {
             String s = manager1.toTxt();
             bw.write(s);
@@ -30,15 +32,7 @@ public class ManagerDaoImpl implements ManagerDao {
 
     @Override
     public List<Manager> findAllManager() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(".\\manager.txt"));
-        String s;
-        List<Manager> managers = new ArrayList<>();
-        while ((s = br.readLine()) != null) {
-            Manager manager = Manager.toObj(s);
-            managers.add(manager);
-        }
-        br.close();
-        return managers;
+        return StreamUtils.findAll(Manager.class);
     }
 
     @Override
@@ -49,7 +43,7 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         List<Manager> allManager = findAllManager();
         allManager.remove(byId);
-        BufferedWriter bw = new BufferedWriter(new FileWriter(".\\manager.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\manager.txt"));
         for (Manager manager : allManager) {
             String s = manager.toTxt();
             bw.write(s);

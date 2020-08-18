@@ -3,6 +3,7 @@ package manager.dao.impl;
 import manager.dao.FruitDao;
 import manager.domain.Customer;
 import manager.domain.Fruit;
+import manager.util.StreamUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class FruitDaoImpl implements FruitDao {
         }
         List<Fruit> allFruit = findAllFruit();
         allFruit.add(fruit);
-        BufferedWriter bw = new BufferedWriter(new FileWriter(".\\fruit.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\fruit.txt"));
         for (Fruit fruit1 : allFruit) {
             String s = fruit1.toTxt();
             bw.write(s);
@@ -29,16 +30,7 @@ public class FruitDaoImpl implements FruitDao {
 
     @Override
     public List<Fruit> findAllFruit() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(".\\fruit.txt"));
-        String s;
-        List<Fruit> fruits = new ArrayList<>();
-        while ((s = br.readLine()) != null) {
-            Fruit fruit = Fruit.toObj(s);
-            fruits.add(fruit);
-        }
-        br.close();
-//        Fruit[] fruits1= (Fruit[]) fruits.toArray();
-        return fruits;
+        return StreamUtils.findAll(Fruit.class);
     }
 
     @Override
@@ -49,7 +41,7 @@ public class FruitDaoImpl implements FruitDao {
         }
         List<Fruit> allFruit = findAllFruit();
         allFruit.remove(byId);
-        BufferedWriter bw = new BufferedWriter(new FileWriter(".\\fruit.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("fruitshop\\fruit.txt"));
         for (Fruit fruit : allFruit) {
             String s = fruit.toTxt();
             bw.write(s);
@@ -81,7 +73,16 @@ public class FruitDaoImpl implements FruitDao {
         return d && a;
     }
 
-    public void buyFruit(String name, String amount) {
+    @Override
+    public boolean buyFruit(String name, String amount) {
+        return false;
     }
+
+    @Override
+    public Fruit getByName(String name) throws IOException {
+        return null;
+    }
+
+
 }
 
