@@ -139,11 +139,11 @@ public class OtherManagerController implements BaseManagerController {
             return;
         }
         //遍历数组打印顾客信息
-        System.out.println("账号\t\t姓名\t密码\t\t余额");
+        System.out.println("账号\t\t\t\t姓名\t\t密码\t\t\t余额");
         for (int i = 0; i < customers.length; i++) {
             Customer customer = customers[i];
             if (customer != null) {
-                System.out.println(customer.getId() + "\t\t" + customer.getName() + "\t" + customer.getPassword() + "\t\t" + customer.getMoney());
+                System.out.println(customer.getId() + "\t\t" + customer.getName() + "\t\t" + customer.getPassword() + "\t\t" + customer.getMoney());
             }
         }
     }
@@ -395,9 +395,9 @@ public class OtherManagerController implements BaseManagerController {
             return;
         }
         //遍历数组打印顾客信息
-        System.out.println("编号\t\t名称\t价格\t\t库存");
+        System.out.println("编号\t\t\t名称\t\t价格\t\t库存量");
         for (Fruit fruit : fruits) {
-            System.out.println(fruit.toTxt());
+            System.out.println(fruit.toShow());
 
         }
     }
@@ -422,7 +422,7 @@ public class OtherManagerController implements BaseManagerController {
                         }
                         break l;
                     } else {
-                        System.out.println("ID不存在，退出请输入exit，不退出请重新输入账号：");
+                        System.out.println("id不存在，退出请输入exit，不退出请重新输入账号：");
                         String exit;
                         exit = sc.next();
                         if (exit.equals("exit")) {
@@ -472,7 +472,7 @@ public class OtherManagerController implements BaseManagerController {
                                     }
                                     break li;
                                 } else {
-                                    System.out.println("ID不存在，退出请输入exit，不退出请重新输入账号：");
+                                    System.out.println("账号不存在，退出请输入exit，不退出请重新输入账号：");
                                     String exit;
                                     exit = sc.next();
                                     if (exit.equals("exit")) {
@@ -572,7 +572,7 @@ public class OtherManagerController implements BaseManagerController {
                 while (true) {
                     boolean exists = customerService.isExists(addId);
                     if (!exists) {//exists为正,则执行
-                        System.out.println("ID已存在，退出请输入exit，不退出请重新输入账号：");
+                        System.out.println("账号已存在，退出请输入exit，不退出请重新输入账号：");
                         String exit;
                         exit = sc.next();
                         if (exit.equals("exit")) {
