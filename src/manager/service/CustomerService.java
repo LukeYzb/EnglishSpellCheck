@@ -24,7 +24,6 @@ public class CustomerService {
         for (Customer customer : customers) {
             String s = customer.toTxt();
             String[] split=s.split(",");
-            System.out.println(split[0]+"--"+split[2]);
             if(id.equals(split[0])&& password.equals(split[2])){
                 flag=true;
                 break lo;
