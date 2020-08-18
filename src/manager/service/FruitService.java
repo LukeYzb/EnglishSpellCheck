@@ -30,21 +30,21 @@ public class FruitService {
         return exists;
      }
 
-  /*  public static void updateFruit(String updateId, Fruit newfruit) {
-        fruitDao.updateFruit(updateId, newfruit);
-    }*/
+    public boolean updateFruit(Fruit newfruit) {
+        return fruitDao.updateFruit(newfruit);
+    }
 
-    /*public static void deleteFruitById(String delId) {
-        fruitDao.deleteFruitById(delId);
-    }*/
+    public boolean deleteFruitById(String delId) {
+        return fruitDao.deleteFruitById(delId);
+    }
 
     //private OtherFruitDao fruitDao=new OtherFruitDao();
- /*   public boolean addFruit(Fruit fruit) {
+    public boolean addFruit(Fruit fruit) {
         //水果对象交给FruitDao库管
         //FruitDao fruitDao=new FruitDao();
         //库管来找水果是否存在
         return fruitDao.addFruit(fruit);
-    }*/
+    }
 
     public boolean isExists(String id) throws IOException {
         Fruit[] fruits = fruitDao.findAllFruit().toArray(new Fruit[0]);

@@ -5,12 +5,10 @@ import manager.dao.CustomerDao;
 import manager.dao.impl.CustomerDaoImpl;
 import manager.dao.impl.FruitDaoImpl;
 import manager.domain.Customer;
-import manager.domain.Fruit;
 import manager.factory.CustomerDaoFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class CustomerService {
     CustomerDaoImpl customerDaoImpl=new CustomerDaoImpl();
@@ -56,12 +54,12 @@ public class CustomerService {
         return flag;
     }
 
-    public void updateCustomer(Customer newcustomer) throws IOException {
-        customerDao.updateCustomer(newcustomer);
+    public boolean updateCustomer(Customer newcustomer) throws IOException {
+        return customerDao.updateCustomer(newcustomer);
     }
 
-    public void deleteCustomerById(String delId) throws IOException {
-        customerDao.deleteCustomerById(delId);
+    public boolean deleteCustomerById(String delId) throws IOException {
+        return customerDao.deleteCustomerById(delId);
     }
 
     public Customer[] findAllCustomer() throws IOException {
