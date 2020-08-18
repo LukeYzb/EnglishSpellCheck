@@ -67,13 +67,6 @@ public class CustomerService {
     }
 
     public  void buyFruit(String name, String amount) throws IOException {
-        Fruit[] fruits = fruitDao.findAllFruit().toArray(new Fruit[0]);
-        for (int i = 0; i < fruits.length; i++) {
-            Fruit fruit=fruits[i];
-            if(fruit.getName().equals(name)){
-
-            }
-        }
         fruitDao.buyFruit(name, amount);
     }
 }
