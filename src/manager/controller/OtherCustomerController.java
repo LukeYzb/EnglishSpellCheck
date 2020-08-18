@@ -1,7 +1,5 @@
 package manager.controller;
 
-import manager.dao.impl.CustomerDaoImpl;
-import manager.dao.impl.FruitDaoImpl;
 import manager.domain.Customer;
 import manager.domain.Fruit;
 import manager.service.CustomerService;
@@ -9,7 +7,6 @@ import manager.service.FruitService;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class OtherCustomerController implements BaseCustomerController {
@@ -20,17 +17,16 @@ public class OtherCustomerController implements BaseCustomerController {
     Scanner sc = new Scanner(System.in);
 
     //    开启顾客购买系统，展示菜单
-    public void start() throws IOException {
+    public void start(String id) throws IOException {
         l:
         while (true) {
             //①②③④⑤
             System.out.println("-----------欢迎使用顾客购买功能!-----------");
-            System.out.print("①登录");
-            System.out.print("\t②查看水果");
-            System.out.print("\t③购买水果");
-            System.out.print("\t④结账");
-            System.out.println("\t⑤退出");
-            System.out.print("请输入要选择的操作（1~5）：");
+            System.out.print("①查看水果");
+            System.out.print("\t②购买水果");
+            System.out.print("\t③结账");
+            System.out.println("\t④退出");
+            System.out.print("请输入要选择的操作（1~4）：");
             lo:
             while (true) {
                 String choice = sc.next();
@@ -38,18 +34,16 @@ public class OtherCustomerController implements BaseCustomerController {
                 lo1:
                 switch (choice) {
                     case "1":
-                        logIn();
-                        break lo;
-                    case "2":
                         findAllFruit();
                         break lo;
-                    case "3":
-                        fruits = buyFruit();
+                    case "2":
+                        //需要修改
+//                        fruits = buyFruit(id);
                         //break lo;
-                    case "4":
+                    case "3":
                         checkout(fruits);
                         break lo;
-                    case "5":
+                    case "4":
                         System.out.println("退出成功");
                         break l;
                     default:
@@ -61,21 +55,23 @@ public class OtherCustomerController implements BaseCustomerController {
     }
 
     @Override
-    public void logIn() throws IOException {
+    public String logIn() throws IOException {
+        String id=null;
         CustomerService customerService = new CustomerService();
+        System.out.println("请先登录！");
         while (true) {
             System.out.println("请输入账户");
-            String id = sc.next();
+            id = sc.next();
             System.out.println("请输入密码");
             String password = sc.next();
             boolean flag = customerService.isExist(id, password);
-            if (!flag) {
-                System.out.println("账号或者密码有误");
-            } else {
-                System.out.println("登录成功");
+            if (flag) {
                 break;
+            }else {
+                System.out.println("账户或密码错误，请重新输入，或者找管理员注册账户！");
             }
         }
+        return id;
     }
 
     @Override
@@ -121,9 +117,9 @@ public class OtherCustomerController implements BaseCustomerController {
                 String go = sc.next();
                 if (go.equalsIgnoreCase("Y")) {
                     break lo;
-                } else if(go.equalsIgnoreCase("N")){
+                } else if (go.equalsIgnoreCase("N")) {
                     break lock;
-                }else {
+                } else {
                     System.out.println("您的输入有误");
                 }
             }
@@ -134,7 +130,7 @@ public class OtherCustomerController implements BaseCustomerController {
     @Override
     public void checkout(ArrayList<Fruit> boughtFruit) {
         System.out.println("您购买了以下水果, 请查看确认");
-        System.out.println("名称\t\t单价\t\t数量\t\t价格");
+        System.out.println("名称\t\t单价\t\t数量\t\t金额");
         int totalPrice = 0;
         for (Fruit fruit : boughtFruit) {
             String[] split = fruit.toTxt().split(",");
@@ -143,7 +139,7 @@ public class OtherCustomerController implements BaseCustomerController {
             totalPrice += total;
         }
         int finalPrice = customerService.checkout(totalPrice);
-        System.out.println("总价为"+totalPrice+"\t\t\t\t\t\t"+"优惠后的价格为"+finalPrice);
+        System.out.println("总价为" + totalPrice + "\t\t\t\t\t\t" + "优惠后的价格为" + finalPrice);
     }
 
 

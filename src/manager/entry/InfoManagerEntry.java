@@ -25,7 +25,16 @@ public class InfoManagerEntry {
                     case "1":
                         //开启顾客系统
                         OtherCustomerController customerController = new OtherCustomerController();
-                        customerController.start();
+                        lo1a:
+                        while(true){
+                            String id = customerController.logIn();
+                            if(id!=null){
+                                customerController.start(id);
+                                break lo1a;
+                            }else {
+                                System.out.println("登录失败，请重新登录！");
+                            }
+                        }
                         break lo;
                     case "2":
                         //开启管理者系统
@@ -38,7 +47,7 @@ public class InfoManagerEntry {
                             //判断ID是否存在
                             l1:
                             while (true) {
-                                if (isManager1==false) {//账号不存在
+                                if (isManager1 == false) {//账号不存在
                                     System.out.println("账号不存在，退出请输入exit，不退出请重新输入账号：");
                                     String exit;
                                     exit = sc.next();
@@ -59,7 +68,7 @@ public class InfoManagerEntry {
                             l2:
                             while (true) {
                                 //密码不存在
-                                if (isManager2==false) {
+                                if (isManager2 == false) {
                                     System.out.println("密码不存在，退出请输入exit，不退出请重新输入密码：");
                                     String exit;
                                     exit = sc.next();

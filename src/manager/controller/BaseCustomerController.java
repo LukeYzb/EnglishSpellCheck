@@ -12,9 +12,9 @@ public interface BaseCustomerController {
     Scanner sc = new Scanner(System.in);
 
     //    开启顾客管理系统，展示菜单
-    public void start() throws IOException;
+    public void start(String id) throws IOException;
 
-    public void logIn() throws IOException;
+    public String logIn() throws IOException;
 
     public void findAllFruit() throws IOException;
 

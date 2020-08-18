@@ -367,9 +367,7 @@ public class OtherManagerController implements BaseManagerController {
                         findAllFruits();
                         break lo;
                     case "2":
-                        findAllFruits();
                         changeFruits();
-                        findAllFruits();
                         break lo;
                     case "3":
                         findAllFruits();
@@ -440,6 +438,7 @@ public class OtherManagerController implements BaseManagerController {
     private void changeFruits() throws IOException {
         l:
         while (true) {
+            findAllFruits();
             //①②③④⑤
             System.out.print("①修改价格");
             System.out.print("\t②修改库存");
@@ -455,13 +454,11 @@ public class OtherManagerController implements BaseManagerController {
                         li:
                         while (true) {
                             String updateId = inputFruitId();
-                            System.out.println("请输入水果的ID：");
-                            updateId = sc.next();
                             //判断ID是否存在
                             l1:
                             while (true) {
                                 boolean exists = fruitService.isExists(updateId);
-                                if (!exists) {//exists为负,则执行
+                                if (exists) {//exists为正,则执行
                                     Fruit fruit = inputFruitPrice(updateId);
                                     boolean result = fruitService.updateFruit(fruit);
                                     //根据返回的bool结果显示添加是否成功
@@ -488,7 +485,7 @@ public class OtherManagerController implements BaseManagerController {
                     case "2":
                         lii:
                         while (true) {
-                            String updateId = inputCustomerId();
+                            String updateId = inputFruitId();
                             //判断ID是否存在
                             l1:
                             while (true) {
@@ -521,7 +518,7 @@ public class OtherManagerController implements BaseManagerController {
                     case "3":
                         liii:
                         while (true) {
-                            String updateId = inputCustomerId();
+                            String updateId = inputFruitId();
                             //判断ID是否存在
                             l1:
                             while (true) {
@@ -779,7 +776,7 @@ public class OtherManagerController implements BaseManagerController {
 
     //用来添加水果，一次输入全部属性
     public Fruit inputFruitInfo(String id) {
-        //根据ID修改顾客
+        //根据ID修改水果
         System.out.println("请输入水果名称：");
         String name = sc.next();
         System.out.println("请输入水果价格：");
