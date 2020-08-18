@@ -44,4 +44,8 @@ public class Obj {
      */
     public void putString(String s) {
     }
+
+    public String toTxt() {
+        return null;
+    }
 }

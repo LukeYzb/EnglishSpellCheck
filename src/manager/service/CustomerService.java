@@ -11,9 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CustomerService {
-    CustomerDaoImpl customerDaoImpl=new CustomerDaoImpl();
+    CustomerDaoImpl customerDaoImpl = new CustomerDaoImpl();
     private CustomerDao customerDao = CustomerDaoFactory.getCustomerDao();
-    FruitDaoImpl fruitDao=new FruitDaoImpl();
+    FruitDaoImpl fruitDao = new FruitDaoImpl();
 
 
     //判断顾客账号或者密码是否正确
@@ -38,7 +38,7 @@ public class CustomerService {
         return customerDao.addCustomer(customer);
     }
 
-    public  boolean isExists(String id) throws IOException {
+    public boolean isExists(String id) throws IOException {
 
 
         Customer[] customers = customerDaoImpl.findAllCustomer().toArray(new Customer[0]);
@@ -68,7 +68,9 @@ public class CustomerService {
         return customers;
     }
 
-    public  void buyFruit(String name, String amount) {
+    public void buyFruit(String name, String amount) {
         fruitDao.buyFruit(name, amount);
     }
+
+
 }

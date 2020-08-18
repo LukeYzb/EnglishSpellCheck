@@ -1,9 +1,9 @@
 package manager.domain;
 
 public class Fruit extends Obj {
-//amount库存
+    //amount库存
     private String amount;
-//    水果价格
+    //水果价格
     private String price;
 
     public String getPrice() {
@@ -16,10 +16,11 @@ public class Fruit extends Obj {
 
     public Fruit() {
     }
-//id水果id，name水果名称，price水果价格，amount库存
+
+    //id水果id，name水果名称，price水果价格，amount库存
     public Fruit(String id, String name, String price, String amount) {
         super(id, name);
-        this.price=price;
+        this.price = price;
         this.amount = amount;
     }
 
