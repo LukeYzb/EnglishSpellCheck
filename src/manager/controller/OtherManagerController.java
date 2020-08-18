@@ -569,7 +569,7 @@ public class OtherManagerController implements BaseManagerController {
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(addId);
-                    if (exists) {//exists为正,则执行
+                    if (!exists) {//exists为正,则执行
                         System.out.println("ID已存在，退出请输入exit，不退出请重新输入账号：");
                         String exit;
                         exit = sc.next();
@@ -679,14 +679,14 @@ public class OtherManagerController implements BaseManagerController {
 //        int金额强转String
         amount = String.valueOf(oriamo);
 //test
-        System.out.println(id);
-        System.out.println(name);
-        System.out.println(passwd);
-        System.out.println(amount);
+//        System.out.println(id);
+//        System.out.println(name);
+//        System.out.println(passwd);
+//        System.out.println(amount);
         //        封装顾客对象并返回
         Customer newcustomer = new Customer(id, name, passwd, amount);
 //        test
-        System.out.println(newcustomer);
+//        System.out.println(newcustomer);
         return newcustomer;
     }
 

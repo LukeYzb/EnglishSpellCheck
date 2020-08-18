@@ -1,5 +1,7 @@
 package manager.controller;
 
+import manager.dao.impl.CustomerDaoImpl;
+import manager.dao.impl.FruitDaoImpl;
 import manager.domain.Customer;
 import manager.domain.Fruit;
 import manager.service.CustomerService;
@@ -7,10 +9,13 @@ import manager.service.FruitService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class OtherCustomerController implements BaseCustomerController {
     FruitService customerService = new FruitService();
+    OtherManagerController otherManagerController=new OtherManagerController();
+    Customer customer=new Customer();
     Scanner sc = new Scanner(System.in);
 
     //    开启顾客购买系统，展示菜单
@@ -109,7 +114,7 @@ public class OtherCustomerController implements BaseCustomerController {
                 customer.buyFruit(name, amount);
                 if (go == "Y") {
                     continue;
-                } else if(go == "Y"){
+                } else if(go == "y"){
                     continue ;
                 } else{
                     break lock;
@@ -121,15 +126,18 @@ public class OtherCustomerController implements BaseCustomerController {
 
     @Override
     public void checkout() {
-        /*customerService.checkOut(total);
-        if(total>=100&&total<=200){
-            total=((total)-100)*0.9+100;
-        }else if (total>200&&total<=500){
-            total=
-        }else {
-
+        int total=0;
+        if (total >= 100 && total <= 200) {
+            total = (int) (((total) - 100) * 0.9 + 100);
+        } else if (total > 200 && total <= 500) {
+            total = (int) (((total) - 200) * 0.8 + 190);
+        } else {
+            total = (int) (((total) - 500) * 0.7 + 350);
         }
-        System.out.println("您一共消费"+total);*/
+        String amount = Integer.toString(total);
+        System.out.println("您一共消费" + total);
+//        获取水果账单
+
     }
 
 
