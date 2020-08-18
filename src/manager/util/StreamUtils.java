@@ -7,6 +7,7 @@ import manager.domain.Obj;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class StreamUtils {
@@ -66,8 +67,12 @@ public class StreamUtils {
         //得到findAllCustomer的list
         List<T> all = findAll(clazz);
         //遍历list,删掉byId对象,得到一个新的list
-//        需要修改，list移除指定对象，下一行代码不可行
-        all.remove(byId);
+        for (Iterator<T> iter = all.iterator(); iter.hasNext();) {
+            T next = iter.next();
+            if (next.getId().equals(byId.getId())) {
+                iter.remove();
+            }
+        }
         //将新的list写进本地customer文件中
         writeIO(fileName, all);
         return true;
