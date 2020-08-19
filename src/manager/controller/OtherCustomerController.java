@@ -145,47 +145,17 @@ public class OtherCustomerController implements BaseCustomerController {
     public void checkout(ArrayList<Fruit> boughtFruit, String id) {
         System.out.println("您购买了以下水果, 请查看确认");
         System.out.println("名称\t\t单价\t\t数量\t\t金额");
-        int totalPrice = 0;
+        double totalPrice = 0;
         for (Fruit fruit : boughtFruit) {
             String[] split = fruit.toTxt().split(",");
-            int total = Integer.parseInt(split[2]) * Integer.parseInt(split[3]);
+            double total = Double.parseDouble(split[2]) * Double.parseDouble(split[3]);
             System.out.println(split[1] + "\t\t" + split[2] + "\t\t" + split[3] + "\t\t" + total);
             totalPrice += total;
         }
-        int finalPrice = customerService.checkout(totalPrice, id);
+        double finalPrice = customerService.checkout(totalPrice, id, boughtFruit);
         System.out.println("总价为" + totalPrice + "\t\t\t\t" + "优惠后的价格为" + finalPrice);
         //结账后账单清空
         boughtFruit.clear();
     }
 
-    //录入水果ID，可以用在buyFruit功能里
-    public String inputFruitId() throws IOException {
-        String Id = null;
-        l:
-        while (true) {
-            System.out.println("请输入水果的ID：");
-            Id = sc.next();
-            //判断ID是否存在
-            l1:
-            while (true) {
-                boolean exists = customerService.isExists(Id);
-                //exists为负,则执行
-                if (!exists) {
-                    System.out.println("id不存在，退出请输入0，不退出请重新输入账号：");
-                    int exit;
-                    exit = sc.nextInt();
-                    if (exit == 0) {
-                        Id = null;
-                        System.out.println("退出成功！");
-                        break l;
-                    } else {
-                        Id = String.valueOf(exit);
-                    }
-                } else {
-                    break l;
-                }
-            }
-        }
-        return Id;
-    }
 }

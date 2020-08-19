@@ -22,8 +22,6 @@ public interface BaseCustomerController {
 
     public void checkout(ArrayList<Fruit> boughtFruit, String id);
 
-    //    录入水果ID
-    public String inputFruitId() throws IOException;
 //抽象方法没有｛｝主体，分号结尾代替
 
 }

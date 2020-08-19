@@ -1,8 +1,10 @@
 package manager.dao;
 
 import manager.domain.Customer;
+import manager.domain.Fruit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface CustomerDao {
@@ -47,5 +49,5 @@ public interface CustomerDao {
      */
     boolean updateCustomer(Customer customer) throws IOException;
 
-    int checkout(int totalPrice, String id);
+    double checkout(double totalPrice, String id, ArrayList<Fruit> boughtFruit);
 }

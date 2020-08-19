@@ -658,7 +658,7 @@ public class OtherManagerController implements BaseManagerController {
         System.out.println("请输入充值金额：");
         String amount = sc.next();
         //String金额强转int
-        int amo = Integer.parseInt(amount);
+        double amo = Double.parseDouble(amount);
         //获取对应顾客的余额、姓名和密码
         CustomerDaoImpl newcustomer1 = new CustomerDaoImpl();
         String originamount = "0";
@@ -672,7 +672,7 @@ public class OtherManagerController implements BaseManagerController {
         }
 
         //String金额强转int
-        int oriamo = Integer.parseInt(originamount);
+        double oriamo = Double.parseDouble(originamount);
         //充值金额加上原来金额=总金额
         oriamo = amo + oriamo;
         //int金额强转String
@@ -692,7 +692,7 @@ public class OtherManagerController implements BaseManagerController {
         System.out.println("请输入充值金额：");
         String amount = sc.next();
         //String金额强转int
-        int amo = Integer.parseInt(amount);
+        double amo = Double.parseDouble(amount);
         //获取对应顾客的余额
         CustomerDaoImpl newcustomer1 = new CustomerDaoImpl();
         String originamount = "0";
@@ -703,7 +703,7 @@ public class OtherManagerController implements BaseManagerController {
             }
         }
         //String金额强转int
-        int oriamo = Integer.parseInt(originamount);
+        double oriamo = Double.parseDouble(originamount);
         //充值金额加上原来金额=总金额
         oriamo = amo + oriamo;
         //int金额强转String

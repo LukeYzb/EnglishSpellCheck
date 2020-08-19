@@ -41,10 +41,10 @@ public class FruitDaoImpl implements FruitDao {
     public boolean buyFruit(String name, String amount) {
         Fruit fruit = getByName(name);
         String[] split = fruit.toTxt().split(",");
-        int quantity = Integer.parseInt(split[3]);
-        quantity = quantity - Integer.parseInt(amount);
+        double quantity = Integer.parseInt(split[3]);
+        quantity = quantity - Double.parseDouble(amount);
         if (quantity >= 0) {
-            String result = Integer.toString(quantity);
+            String result = Double.toString(quantity);
             Fruit fruit1 = new Fruit(split[0], split[1], split[2], result);
             updateFruit(fruit1);
             return true;
