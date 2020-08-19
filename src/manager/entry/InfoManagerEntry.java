@@ -28,11 +28,12 @@ public class InfoManagerEntry {
                         lo1a:
                         while(true){
                             String id = customerController.logIn();
-                            if(id!=null){
+                            if(id.equals("N")){
+                                System.out.println("退出成功！");
+                                break lo;
+                            }else {
                                 customerController.start(id);
                                 break lo1a;
-                            }else {
-                                System.out.println("登录失败，请重新登录！");
                             }
                         }
                         break lo;

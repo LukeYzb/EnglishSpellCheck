@@ -13,10 +13,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OtherCustomerController implements BaseCustomerController {
-    FruitService fruitService = new FruitService();
+//    FruitService fruitService = new FruitService();
     CustomerService customerService = new CustomerService();
-    OtherManagerController otherManagerController = new OtherManagerController();
-    Customer customer = new Customer();
+//    OtherManagerController otherManagerController = new OtherManagerController();
+//    Customer customer = new Customer();
+    ArrayList<Fruit> fruits=new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     //    开启顾客购买系统，展示菜单
@@ -61,8 +62,8 @@ public class OtherCustomerController implements BaseCustomerController {
         CustomerService customerService = new CustomerService();
         System.out.println("---请先登录,无账号请先注册账号---");
         while (true) {
-            System.out.println("请输入账户(输入n返回):");
-            String id = sc.next();
+            System.out.println("请输入账户(输入N返回):");
+            id = sc.next();
             if(id.equalsIgnoreCase("N")){
                 break;
             }
@@ -127,8 +128,8 @@ public class OtherCustomerController implements BaseCustomerController {
                     break lock;
                 }
             }
-
         }
+        return boughtFruit;
     }
 
     @Override
