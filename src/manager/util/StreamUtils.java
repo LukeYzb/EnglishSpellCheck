@@ -67,7 +67,7 @@ public class StreamUtils {
         //得到findAllCustomer的list
         List<T> all = findAll(clazz);
         //遍历list,删掉byId对象,得到一个新的list
-        for (Iterator<T> iter = all.iterator(); iter.hasNext();) {
+        for (Iterator<T> iter = all.iterator(); iter.hasNext(); ) {
             T next = iter.next();
             if (next.getId().equals(byId.getId())) {
                 iter.remove();
@@ -102,6 +102,7 @@ public class StreamUtils {
 
     /**
      * 通过姓名得到特定对象
+     *
      * @param clazz
      * @param name
      * @param <T>

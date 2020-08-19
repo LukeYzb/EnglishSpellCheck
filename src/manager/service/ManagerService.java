@@ -13,7 +13,7 @@ public class ManagerService {
         Manager[] managers = managerDao.findAllManager().toArray(new Manager[0]);
         //假设id不存在
         boolean exists = false;
-         //遍历数组
+        //遍历数组
         for (int i = 0; i < managers.length; i++) {
             Manager manager = managers[i];
             if (manager != null && manager.getId().equals(id)) {
@@ -23,15 +23,16 @@ public class ManagerService {
         }
         return exists;
     }
+
     public static boolean passwdIsExists(String passwd) throws IOException {
         Manager[] managers = managerDao.findAllManager().toArray(new Manager[0]);
-         //假设id不存在
-        boolean exists=false;
+        //假设id不存在
+        boolean exists = false;
         //遍历数组
         for (int i = 0; i < managers.length; i++) {
             Manager manager = managers[i];
-            if(manager !=null&& manager.getPassword().equals(passwd)){
-                exists=true;
+            if (manager != null && manager.getPassword().equals(passwd)) {
+                exists = true;
                 break;
             }
         }

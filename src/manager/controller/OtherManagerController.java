@@ -155,7 +155,7 @@ public class OtherManagerController implements BaseManagerController {
         if (addId != null) {
             l:
             while (true) {
-            //判断ID是否存在
+                //判断ID是否存在
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(addId);
@@ -405,7 +405,7 @@ public class OtherManagerController implements BaseManagerController {
         if (delId != null) {
             l:
             while (true) {
-            //判断ID是否存在
+                //判断ID是否存在
                 l1:
                 while (true) {
                     boolean exists = customerService.isExists(delId);

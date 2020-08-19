@@ -72,7 +72,7 @@ public class CustomerService {
         return fruitDao.buyFruit(name, amount);
     }
 
-    public int checkout(int totalPrice,String id) {
-        return customerDao.checkout(totalPrice,id);
+    public int checkout(int totalPrice, String id) {
+        return customerDaoImpl.checkout(totalPrice, id);
     }
 }

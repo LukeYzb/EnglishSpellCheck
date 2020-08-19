@@ -8,6 +8,7 @@ import java.util.List;
 public interface ManagerDao {
     /**
      * 添加管理员对象
+     *
      * @param manager
      * @return是否成功
      */
@@ -15,12 +16,14 @@ public interface ManagerDao {
 
     /**
      * 查询所有管理员信息
+     *
      * @return一个list集合
      */
     List<Manager> findAllManager() throws IOException;
 
     /**
      * 删除特定Id对象
+     *
      * @param delId
      * @return是否成功
      */
@@ -28,6 +31,7 @@ public interface ManagerDao {
 
     /**
      * 查询特定Id管理员对象
+     *
      * @param id
      * @return管理员对象
      */
@@ -35,6 +39,7 @@ public interface ManagerDao {
 
     /**
      * 更新管理员对象
+     *
      * @param manager
      * @return是否成功
      */

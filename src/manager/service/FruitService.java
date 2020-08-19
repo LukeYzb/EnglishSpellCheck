@@ -10,20 +10,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FruitService {
-    FruitDaoImpl fruitDao=new FruitDaoImpl();
+    FruitDaoImpl fruitDao = new FruitDaoImpl();
 
 
     //通过水果库管工厂类，获取库管对象
     //private  FruitDao fruitDao = FruitDaoFactory.getFruitDao();
     //通过名称判断水果是否存在
-    public  boolean isExist(String name) throws IOException {
+    public boolean isExist(String name) throws IOException {
         Fruit byName = fruitDao.getByName(name);
-        if(byName==null){
+        if (byName == null) {
             return false;
-        }else {
+        } else {
             return true;
         }
-     }
+    }
 
     public Fruit getByName(String name) {
         return fruitDao.getByName(name);

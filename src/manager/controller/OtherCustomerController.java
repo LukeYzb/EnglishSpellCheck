@@ -115,14 +115,14 @@ public class OtherCustomerController implements BaseCustomerController {
                     break lo;
                 }
                 lo1:
-                while(true) {
+                while (true) {
                     System.out.println("请输入你要购买的数量");
                     String amount = sc.next();
                     byName.setAmount(amount);
                     boolean amountOutOfRange = customer.buyFruit(name, amount);
-                    if(amountOutOfRange){
+                    if (amountOutOfRange) {
                         break lo1;
-                    }else {
+                    } else {
                         System.out.println("库存不足！");
                     }
                 }
@@ -149,11 +149,11 @@ public class OtherCustomerController implements BaseCustomerController {
         for (Fruit fruit : boughtFruit) {
             String[] split = fruit.toTxt().split(",");
             int total = Integer.parseInt(split[2]) * Integer.parseInt(split[3]);
-            System.out.println(split[1] + "\t\t" + split[2] + "\t\t" + split[3] + "\t" + total);
+            System.out.println(split[1] + "\t\t" + split[2] + "\t\t" + split[3] + "\t\t" + total);
             totalPrice += total;
         }
         int finalPrice = customerService.checkout(totalPrice, id);
-        System.out.println("总价为" + totalPrice + "\t\t\t\t\t\t" + "优惠后的价格为" + finalPrice);
+        System.out.println("总价为" + totalPrice + "\t\t\t\t" + "优惠后的价格为" + finalPrice);
         //结账后账单清空
         boughtFruit.clear();
     }
@@ -163,7 +163,7 @@ public class OtherCustomerController implements BaseCustomerController {
         String Id = null;
         l:
         while (true) {
-            System.out.println("请输入水果的账号：");
+            System.out.println("请输入水果的ID：");
             Id = sc.next();
             //判断ID是否存在
             l1:
@@ -171,7 +171,7 @@ public class OtherCustomerController implements BaseCustomerController {
                 boolean exists = customerService.isExists(Id);
                 //exists为负,则执行
                 if (!exists) {
-                    System.out.println("账号不存在，退出请输入0，不退出请重新输入账号：");
+                    System.out.println("id不存在，退出请输入0，不退出请重新输入账号：");
                     int exit;
                     exit = sc.nextInt();
                     if (exit == 0) {

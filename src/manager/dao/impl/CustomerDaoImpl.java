@@ -51,9 +51,14 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer byId = getById(id);
         String[] split = byId.toTxt().split(",");
         int writePrice = Integer.parseInt(split[3]) - finalPrice;
-        byId.setMoney(Integer.toString(writePrice));
-        updateCustomer(byId);
-
+        String money = Integer.toString(writePrice);
+        int money1 = Integer.parseInt(money);
+        if (money1 <= 0) {
+            System.out.println("账户余额不足，充值后在购买！！！");
+        } else {
+            byId.setMoney(money);
+            updateCustomer(byId);
+        }
         return finalPrice;
     }
 }

@@ -46,6 +46,7 @@ public class Fruit extends Obj {
                 + price + ","
                 + amount;
     }
+
     public String toShow() {
         return this.getId() + "    "
                 + this.getName() + "      "

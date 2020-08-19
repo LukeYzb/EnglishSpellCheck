@@ -43,12 +43,12 @@ public class FruitDaoImpl implements FruitDao {
         String[] split = fruit.toTxt().split(",");
         int quantity = Integer.parseInt(split[3]);
         quantity = quantity - Integer.parseInt(amount);
-        if(quantity>=0){
+        if (quantity >= 0) {
             String result = Integer.toString(quantity);
             Fruit fruit1 = new Fruit(split[0], split[1], split[2], result);
             updateFruit(fruit1);
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -57,7 +57,5 @@ public class FruitDaoImpl implements FruitDao {
     public Fruit getByName(String name) {
         return StreamUtils.getByName(Fruit.class, name);
     }
-
-
 }
 

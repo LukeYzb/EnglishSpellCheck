@@ -15,27 +15,27 @@ public class ManagerDaoImpl implements ManagerDao {
 
     @Override
     public boolean addManager(Manager manager) {
-        return StreamUtils.add(Manager.class,manager);
+        return StreamUtils.add(Manager.class, manager);
     }
 
     @Override
-    public List<Manager> findAllManager()  {
+    public List<Manager> findAllManager() {
         return StreamUtils.findAll(Manager.class);
     }
 
     @Override
-    public boolean deleteManagerById(String delId)  {
-        return StreamUtils.deleteById(Manager.class,delId);
+    public boolean deleteManagerById(String delId) {
+        return StreamUtils.deleteById(Manager.class, delId);
     }
 
     @Override
-    public Manager getById(String id)  {
-        return StreamUtils.getById(Manager.class,id);
+    public Manager getById(String id) {
+        return StreamUtils.getById(Manager.class, id);
     }
 
     @Override
-    public boolean updateManager(Manager manager)  {
-        return StreamUtils.update(Manager.class,manager);
+    public boolean updateManager(Manager manager) {
+        return StreamUtils.update(Manager.class, manager);
     }
 }
 
