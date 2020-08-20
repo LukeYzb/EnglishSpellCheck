@@ -124,14 +124,17 @@ public class OtherCustomerController implements BaseCustomerController {
                     }
                 }
                 boughtFruit.add(byName);
-                System.out.println("是否继续购买Y/N");
-                String go = sc.next();
-                if (go.equalsIgnoreCase("Y")) {
-                    break lo;
-                } else if (go.equalsIgnoreCase("N")) {
-                    break lock;
-                } else {
-                    System.out.println("您的输入有误");
+                lo2:
+                while (true){
+                    System.out.println("是否继续购买Y/N");
+                    String go = sc.next();
+                    if (go.equalsIgnoreCase("Y")) {
+                        break lo;
+                    } else if (go.equalsIgnoreCase("N")) {
+                        break lock;
+                    } else {
+                        System.out.println("您的输入有误");
+                    }
                 }
             }
         }

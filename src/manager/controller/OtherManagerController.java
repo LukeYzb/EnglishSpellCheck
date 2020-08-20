@@ -407,7 +407,7 @@ public class OtherManagerController implements BaseManagerController {
                 //判断ID是否存在
                 l1:
                 while (true) {
-                    boolean exists = customerService.isExists(delId);
+                    boolean exists = fruitService.isExists(delId);
                     //水果存在,则执行
                     if (exists) {
                         boolean result = fruitService.deleteFruitById(delId);
@@ -566,7 +566,7 @@ public class OtherManagerController implements BaseManagerController {
                 //判断ID是否存在
                 l1:
                 while (true) {
-                    boolean exists = customerService.isExists(addId);
+                    boolean exists = fruitService.isExists(addId);
                     if (exists) {//exists为正,则执行
                         System.out.println("ID已存在，退出请输入exit，不退出请重新输入账号：");
                         String exit;
