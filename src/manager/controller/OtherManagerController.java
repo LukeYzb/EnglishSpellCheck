@@ -421,7 +421,7 @@ public class OtherManagerController implements BaseManagerController {
                         }
                         break l;
                     } else {
-                        System.out.println("id不存在，退出请输入exit，不退出请重新输入账号：");
+                        System.out.println("ID不存在，退出请输入exit，不退出请重新输入账号：");
                         String exit;
                         exit = sc.next();
                         if (exit.equals("exit")) {
@@ -470,7 +470,7 @@ public class OtherManagerController implements BaseManagerController {
                                     }
                                     break li;
                                 } else {
-                                    System.out.println("账号不存在，退出请输入exit，不退出请重新输入账号：");
+                                    System.out.println("ID不存在，退出请输入exit，不退出请重新输入账号：");
                                     String exit;
                                     exit = sc.next();
                                     if (exit.equals("exit")) {
@@ -535,7 +535,7 @@ public class OtherManagerController implements BaseManagerController {
                                     }
                                     break liii;
                                 } else {
-                                    System.out.println("账号不存在，退出请输入exit，不退出请重新输入账号：");
+                                    System.out.println("ID不存在，退出请输入exit，不退出请重新输入账号：");
                                     String exit;
                                     exit = sc.next();
                                     if (exit.equals("exit")) {

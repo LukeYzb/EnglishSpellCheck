@@ -2,6 +2,7 @@ package manager.entry;
 
 import manager.controller.OtherCustomerController;
 import manager.controller.OtherManagerController;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -40,7 +41,7 @@ public class InfoManagerEntry {
                         lo2:
                         while (true) {
                             OtherManagerController otherManagerController = new OtherManagerController();
-                            System.out.println("请输入管理员账号：");
+                            System.out.println("请输入管理员账号，输入错误可以再输入exit退出：");
                             String account = sc.next();
                             boolean isManager1 = otherManagerController.logInAccount(account);
                             //判断ID是否存在
@@ -61,7 +62,7 @@ public class InfoManagerEntry {
                                 }
                             }
                             //判断密码是否正确
-                            System.out.println("请输入管理员密码：");
+                            System.out.println("请输入管理员密码，输入错误可以再输入exit退出：");
                             String passwd = sc.next();
                             boolean isManager2 = otherManagerController.logInPassword(passwd);
                             l2:

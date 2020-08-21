@@ -3,6 +3,7 @@ package manager.controller;
 import manager.domain.Fruit;
 import manager.service.CustomerService;
 import manager.service.FruitService;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -122,7 +123,7 @@ public class OtherCustomerController implements BaseCustomerController {
                 }
                 boughtFruit.add(byName);
                 lo2:
-                while (true){
+                while (true) {
                     System.out.println("是否继续购买Y/N");
                     String go = sc.next();
                     if (go.equalsIgnoreCase("Y")) {
@@ -151,7 +152,7 @@ public class OtherCustomerController implements BaseCustomerController {
             totalPrice += total;
         }
         double finalPrice = customerService.checkout(totalPrice, id, boughtFruit);
-        DecimalFormat df=new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("#.00");
         System.out.println("总价为" + df.format(totalPrice) + "\t\t\t\t" + "优惠后的价格为" + df.format(finalPrice));
         //结账后账单清空
         boughtFruit.clear();
