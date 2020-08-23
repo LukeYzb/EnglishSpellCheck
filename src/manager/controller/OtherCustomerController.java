@@ -5,7 +5,6 @@ import manager.service.CustomerService;
 import manager.service.FruitService;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,11 +38,16 @@ public class OtherCustomerController implements BaseCustomerController {
                         fruits = buyFruit();
                         break lo;
                     case "3":
-                        checkout(fruits, id);
+                        boughtFruit=checkout(fruits, id);
                         break lo;
                     case "4":
-                        System.out.println("退出成功");
-                        break l;
+                        if(!boughtFruit.isEmpty()){
+                            System.out.println("有账单未结账，请结账后退出！");
+                            break lo;
+                        }else {
+                            System.out.println("退出成功");
+                            break l;
+                        }
                     default:
                         System.out.print("输入有误，请重新输入");
                         break lo1;
@@ -141,7 +145,7 @@ public class OtherCustomerController implements BaseCustomerController {
     }
 
     @Override
-    public void checkout(ArrayList<Fruit> boughtFruit, String id) {
+    public ArrayList<Fruit> checkout(ArrayList<Fruit> boughtFruit, String id) {
         System.out.println("您购买了以下水果, 请查看确认");
         System.out.println("名称\t\t单价\t\t数量\t\t金额");
         double totalPrice = 0;
@@ -156,5 +160,6 @@ public class OtherCustomerController implements BaseCustomerController {
         System.out.println("总价为" + df.format(totalPrice) + "\t\t\t\t" + "优惠后的价格为" + df.format(finalPrice));
         //结账后账单清空
         boughtFruit.clear();
+        return boughtFruit;
     }
 }
